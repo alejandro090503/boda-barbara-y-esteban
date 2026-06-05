@@ -181,14 +181,20 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 .hotel-row a,.hotel-row span{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:17px;color:var(--dark);text-decoration:none}
 .hotel-row a:hover{color:var(--accent)}
 
-/* ── GALERIA ── */
-.gal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:26px}
-.gal-item{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:3px;background:var(--surface)}
-.gal-item::after{content:'';position:absolute;inset:6px;border:1px solid rgba(252,246,234,.35);pointer-events:none;z-index:2}
-.gal-item img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.02) contrast(1.03);transition:transform .6s ease}
-.gal-item:hover img{transform:scale(1.04)}
-.gal-tall{grid-row:span 2}
-.gal-item.gal-tall img{min-height:100%}
+/* ── GALERIA · CARRUSEL ── */
+.gal-carousel{margin-top:28px;position:relative}
+.gal-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:4px 0 6px;scroll-padding:0 24px}
+.gal-track::-webkit-scrollbar{display:none}
+.gal-slide{flex:0 0 80%;scroll-snap-align:center;position:relative;aspect-ratio:3/4;border-radius:4px;overflow:hidden;background:var(--surface);border:1px solid var(--border)}
+.gal-slide::after{content:'';position:absolute;inset:8px;border:1px solid rgba(252,246,234,.4);pointer-events:none;z-index:2}
+.gal-slide img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.03) contrast(1.04)}
+.gal-cap{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:34px 16px 14px;background:linear-gradient(to top,rgba(40,26,14,.72),transparent);font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:16px;letter-spacing:.02em;color:#FCF6EA;text-align:left;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.gal-dots{display:flex;justify-content:center;gap:9px;margin-top:18px}
+.gal-dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;padding:0;cursor:pointer;transition:all .3s;flex-shrink:0}
+.gal-dot.active{background:var(--gold);transform:scale(1.25)}
+.gal-swipe{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;font-family:'Italiana',serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);opacity:.75}
+.gal-swipe svg{width:26px;height:13px;stroke:var(--gold);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;animation:swipehint 1.8s ease-in-out infinite}
+@keyframes swipehint{0%,100%{transform:translateX(-3px)}50%{transform:translateX(3px)}}
 
 /* ── REGALOS ── */
 #regalos{background:var(--dark)}
@@ -484,12 +490,16 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
     <span class="eyebrow">Nuestros Momentos</span>
     <h2 class="heading-sm">Galería</h2>
     <div class="orn" style="margin-top:16px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
-    <div class="gal-grid rv">
-      <div class="gal-item gal-tall"><img src="foto4.jpg" loading="lazy" alt="Bárbara y Esteban en atuendo tradicional"></div>
-      <div class="gal-item"><img src="foto1.jpg" loading="lazy" alt="Bárbara y Esteban abrazados"></div>
-      <div class="gal-item"><img src="foto2.jpg" loading="lazy" alt="Bárbara y Esteban sonriendo"></div>
-      <div class="gal-item"><img src="foto5.jpg" loading="lazy" alt="Bárbara y Esteban juntos"></div>
-      <div class="gal-item gal-tall"><img src="foto3.jpg" loading="lazy" alt="Bárbara y Esteban en una celebración"></div>
+    <div class="gal-carousel rv">
+      <div class="gal-track" id="galTrack">
+        <div class="gal-slide"><img src="foto4.jpg" loading="lazy" alt="Bárbara y Esteban en atuendo tradicional"><span class="gal-cap">Nuestras raíces</span></div>
+        <div class="gal-slide"><img src="foto1.jpg" loading="lazy" alt="Bárbara y Esteban abrazados"><span class="gal-cap">Juntos</span></div>
+        <div class="gal-slide"><img src="foto2.jpg" loading="lazy" alt="Bárbara y Esteban sonriendo"><span class="gal-cap">Risas</span></div>
+        <div class="gal-slide"><img src="foto5.jpg" loading="lazy" alt="Bárbara y Esteban muy cerca"><span class="gal-cap">Complicidad</span></div>
+        <div class="gal-slide"><img src="foto3.jpg" loading="lazy" alt="Bárbara y Esteban en una celebración"><span class="gal-cap">Cada momento</span></div>
+      </div>
+      <div class="gal-dots" id="galDots"></div>
+      <div class="gal-swipe"><svg viewBox="0 0 26 13"><polyline points="6 2 1 6.5 6 11"/><polyline points="20 2 25 6.5 20 11"/><line x1="1" y1="6.5" x2="25" y2="6.5"/></svg>Desliza</div>
     </div>
   </section>
 
@@ -678,6 +688,39 @@ function initMain(){
     btnWa.href=waUrl;
     btnWa.addEventListener('click',function(e){e.preventDefault();window.open(waUrl,'_blank');});
   }
+
+  /* Carrusel galería — dots + sync */
+  (function(){
+    const track=document.getElementById('galTrack');
+    const dotsBox=document.getElementById('galDots');
+    if(!track||!dotsBox)return;
+    const slides=[...track.children];
+    slides.forEach((s,i)=>{
+      const b=document.createElement('button');
+      b.className='gal-dot'+(i===0?' active':'');
+      b.setAttribute('aria-label','Foto '+(i+1));
+      b.addEventListener('click',()=>{
+        track.scrollTo({left:s.offsetLeft-(track.clientWidth-s.clientWidth)/2,behavior:'smooth'});
+      });
+      dotsBox.appendChild(b);
+    });
+    const dots=[...dotsBox.children];
+    let raf=null;
+    track.addEventListener('scroll',()=>{
+      if(raf)return;
+      raf=requestAnimationFrame(()=>{
+        raf=null;
+        const center=track.scrollLeft+track.clientWidth/2;
+        let best=0,bestD=Infinity;
+        slides.forEach((s,i)=>{
+          const sc=s.offsetLeft+s.clientWidth/2;
+          const d=Math.abs(sc-center);
+          if(d<bestD){bestD=d;best=i;}
+        });
+        dots.forEach((d,i)=>d.classList.toggle('active',i===best));
+      });
+    },{passive:true});
+  })();
 
   /* Copy */
   window.copyText=function(text){
