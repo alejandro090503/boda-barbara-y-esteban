@@ -15,24 +15,26 @@
 <meta name="twitter:title" content="Bárbara y Esteban · 31 Octubre 2026">
 <meta name="twitter:description" content="Nuestra boda religiosa en Zimapán, Hidalgo.">
 <meta name="twitter:image" content="https://boda-barbara-y-esteban.vercel.app/og-image.jpg">
-<meta name="theme-color" content="#382617">
+<meta name="theme-color" content="#3A1E16">
 <script>if('scrollRestoration' in history){history.scrollRestoration='manual';}window.scrollTo(0,0);</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#FBF6EC;
-  --surface:#F1E7D4;
-  --card:#FEFBF4;
-  --accent:#6F7042;       /* olivo otoñal */
-  --dark:#382617;         /* marrón espresso */
-  --text:#382818;         /* texto marrón profundo */
-  --gold:#A87B3D;
-  --gold-light:#CFAE76;
-  --blush:#D8C4A4;
-  --border:rgba(168,123,61,.26);
-  --border-light:rgba(168,123,61,.14);
+  --bg:#FAF4EA;           /* crema cálido (blanco roto / arena clara) */
+  --surface:#EFE2CE;      /* arena (#D4C5B2 aclarada) */
+  --card:#FFFFFF;         /* blanco */
+  --accent:#7D3131;       /* vino (secundario cálido) */
+  --dark:#3A1E16;         /* marrón-terracota muy oscuro (fondos oscuros) */
+  --text:#3A201A;         /* texto principal */
+  --gold:#BD4E1E;         /* TERRACOTA — acento de firma */
+  --gold-light:#DDA579;   /* terracota claro (texto sobre oscuro) */
+  --blush:#D4C5B2;        /* arena */
+  --blue:#02006B;         /* azul — complemento puntual */
+  --blue-soft:#4A47A8;    /* azul claro para fondos oscuros */
+  --border:rgba(189,78,30,.26);
+  --border-light:rgba(189,78,30,.14);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{overflow-x:hidden;max-width:100vw}
@@ -43,16 +45,16 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 #envelope-screen{position:fixed;inset:0;z-index:9000;overflow:hidden;cursor:pointer;background:#2a1c10}
 .env-bg{position:absolute;inset:0;background:url('portada.jpg') center/cover no-repeat;transform:scale(1.04)}
 .env-veil{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(40,26,14,.62),rgba(40,26,14,.5) 45%,rgba(40,26,14,.7))}
-.env-frame{position:absolute;inset:18px;border:1px solid rgba(207,174,118,.5);pointer-events:none}
-.env-frame::before{content:'';position:absolute;inset:6px;border:1px solid rgba(207,174,118,.22)}
+.env-frame{position:absolute;inset:18px;border:1px solid rgba(221,165,121,.5);pointer-events:none}
+.env-frame::before{content:'';position:absolute;inset:6px;border:1px solid rgba(221,165,121,.22)}
 .env-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 32px;z-index:2}
 .env-eyebrow{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:18px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-light);margin-bottom:18px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
 .env-mono{font-family:'Great Vibes',cursive;font-size:84px;color:#FCF6EA;line-height:1;text-shadow:0 2px 18px rgba(0,0,0,.5)}
 .env-mono span{color:var(--gold-light);font-size:.7em;display:inline-block;margin:0 .04em}
 .env-names{font-family:'Great Vibes',cursive;font-size:40px;color:#FCF6EA;margin-top:14px;text-shadow:0 2px 14px rgba(0,0,0,.5)}
 .env-date{font-family:'Italiana',serif;font-size:14px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-light);margin-top:18px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
-.env-tap{position:absolute;bottom:64px;left:50%;transform:translateX(-50%);z-index:10;font-family:'Italiana',serif;font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-light);opacity:0;padding:15px 38px;white-space:nowrap;border:1px solid rgba(207,174,118,.55);border-radius:50px;background:rgba(40,26,14,.3);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.env-tap::before{content:'';position:absolute;inset:0;border-radius:50px;border:1px solid rgba(207,174,118,.4);animation:envpulse 2s ease-out infinite}
+.env-tap{position:absolute;bottom:64px;left:50%;transform:translateX(-50%);z-index:10;font-family:'Italiana',serif;font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-light);opacity:0;padding:15px 38px;white-space:nowrap;border:1px solid rgba(221,165,121,.55);border-radius:50px;background:rgba(40,26,14,.3);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.env-tap::before{content:'';position:absolute;inset:0;border-radius:50px;border:1px solid rgba(221,165,121,.4);animation:envpulse 2s ease-out infinite}
 @keyframes envpulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.28);opacity:0}}
 #env-flash{position:fixed;inset:0;z-index:9999;background:#FBF6EC;opacity:0;pointer-events:none}
 
@@ -83,7 +85,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 /* ── SCROLL HINT ── */
 .scroll-hint{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:1;transition:opacity .7s;white-space:nowrap}
 .scroll-hint.hidden{opacity:0;pointer-events:none}
-.scroll-hint-txt{font-family:'Italiana',serif;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(207,174,118,.9)}
+.scroll-hint-txt{font-family:'Italiana',serif;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(221,165,121,.9)}
 .scroll-hint-arrow{animation:scrollbounce 1.8s ease-in-out infinite}
 .scroll-hint-arrow svg{width:24px;height:24px;stroke:var(--gold-light);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
 @keyframes scrollbounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
@@ -92,8 +94,8 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 #hero{position:relative;height:100vh;height:100dvh;min-height:620px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:url('portada.jpg') center/cover no-repeat;background-color:var(--surface)}
 .hero-veil{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(40,26,14,.6) 0%,rgba(40,26,14,.4) 40%,rgba(40,26,14,.5) 75%,rgba(40,26,14,.66) 100%)}
-.hero-frame{position:absolute;inset:20px;border:1px solid rgba(207,174,118,.4);pointer-events:none}
-.hero-frame::before{content:'';position:absolute;inset:6px;border:1px solid rgba(207,174,118,.18)}
+.hero-frame{position:absolute;inset:20px;border:1px solid rgba(221,165,121,.4);pointer-events:none}
+.hero-frame::before{content:'';position:absolute;inset:6px;border:1px solid rgba(221,165,121,.18)}
 .hero-corner{position:absolute;width:24px;height:24px}
 .hero-corner svg{width:24px;height:24px}
 .hc-tl{top:-1px;left:-1px}
@@ -101,10 +103,10 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 .hc-bl{bottom:-1px;left:-1px;transform:scaleY(-1)}
 .hc-br{bottom:-1px;right:-1px;transform:scale(-1)}
 .hero-content{position:relative;z-index:2;text-align:center;padding:0 30px}
-.hero-tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:18px;letter-spacing:.18em;text-transform:uppercase;color:#E8C988;display:block;margin-bottom:20px;text-shadow:0 1px 10px rgba(0,0,0,.75)}
+.hero-tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:18px;letter-spacing:.18em;text-transform:uppercase;color:#E6A877;display:block;margin-bottom:20px;text-shadow:0 1px 10px rgba(0,0,0,.75)}
 .hero-bride,.hero-groom{font-family:'Great Vibes',cursive;font-size:clamp(62px,19vw,90px);color:#FEFCF8;line-height:1;display:block;text-shadow:0 2px 20px rgba(0,0,0,.5),0 1px 6px rgba(0,0,0,.4)}
-.hero-amp{font-family:'Great Vibes',cursive;font-size:46px;color:#E8C988;display:block;margin:.06em 0;text-shadow:0 1px 10px rgba(0,0,0,.7)}
-.hero-date{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:21px;letter-spacing:.12em;color:#E8C988;margin-top:22px;display:block;text-shadow:0 1px 10px rgba(0,0,0,.75)}
+.hero-amp{font-family:'Great Vibes',cursive;font-size:46px;color:#E6A877;display:block;margin:.06em 0;text-shadow:0 1px 10px rgba(0,0,0,.7)}
+.hero-date{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:21px;letter-spacing:.12em;color:#E6A877;margin-top:22px;display:block;text-shadow:0 1px 10px rgba(0,0,0,.75)}
 
 /* ── CARD ── */
 .card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:36px 26px;position:relative;margin:0 4px}
@@ -133,7 +135,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 .loc-venue-lbl{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:16px;letter-spacing:.07em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px}
 .loc-divider{height:14px}
 .loc-venue{font-family:'Great Vibes',cursive;font-size:38px;color:var(--dark);text-align:center;line-height:1.1;margin-bottom:16px}
-.loc-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(111,112,66,.16);justify-content:center}
+.loc-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(189,78,30,.16);justify-content:center}
 .loc-row:last-of-type{border-bottom:none}
 .loc-icon{width:17px;height:17px;flex-shrink:0;stroke:var(--gold);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .loc-txt{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:18px;color:var(--dark);line-height:1.55;text-align:center}
@@ -143,15 +145,15 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 .btn-map svg{width:14px;height:14px;fill:currentColor;flex-shrink:0}
 .cal-row{margin-top:20px;text-align:center}
 .btn-cal{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--border);color:var(--text);text-decoration:none;font-family:'Italiana',serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;padding:12px 22px;border-radius:50px;transition:all .3s;cursor:pointer}
-.btn-cal:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn-cal:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
 .btn-cal svg{width:13px;height:13px;fill:currentColor}
 
 /* ── ITINERARIO ── */
 .itin-list{display:flex;flex-direction:column;gap:0;margin-top:24px;position:relative}
 .itin-list::before{content:'';position:absolute;left:50%;transform:translateX(-50%);top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--border),transparent)}
 .itin-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding:22px 16px 10px;position:relative;z-index:1}
-.itin-dot{width:8px;height:8px;background:var(--gold);transform:rotate(45deg);border-radius:1px;margin-bottom:14px;box-shadow:0 0 0 4px rgba(168,123,61,.13),0 0 14px rgba(168,123,61,.38)}
-.itin-dot.sage{background:var(--accent);box-shadow:0 0 0 4px rgba(111,112,66,.13),0 0 14px rgba(111,112,66,.38)}
+.itin-dot{width:8px;height:8px;background:var(--gold);transform:rotate(45deg);border-radius:1px;margin-bottom:14px;box-shadow:0 0 0 4px rgba(189,78,30,.13),0 0 14px rgba(189,78,30,.38)}
+.itin-dot.sage{background:var(--blue);box-shadow:0 0 0 4px rgba(2,0,107,.13),0 0 14px rgba(2,0,107,.34)}
 .itin-time{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;letter-spacing:1px;color:var(--dark);line-height:1;margin-bottom:6px}
 .itin-ev{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:19px;letter-spacing:.3px;color:var(--dark)}
 .itin-place{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:16px;color:var(--accent);margin-top:3px}
@@ -168,7 +170,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 .dc-circle{width:34px;height:34px;border-radius:50%;border:1px solid var(--border)}
 .dc-name{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:13px;color:var(--text);text-align:center;max-width:64px;line-height:1.35}
 .dc-avoid-lbl{font-family:'Italiana',serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);text-align:center;display:block;margin:22px 0 12px;opacity:.85}
-.no-kids{display:flex;align-items:flex-start;gap:14px;border:1px solid var(--border);border-radius:4px;padding:18px;margin-top:24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:17px;color:var(--dark);line-height:1.65;background:rgba(168,123,61,.05)}
+.no-kids{display:flex;align-items:flex-start;gap:14px;border:1px solid var(--border);border-radius:4px;padding:18px;margin-top:24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:17px;color:var(--dark);line-height:1.65;background:rgba(189,78,30,.05)}
 .no-kids svg{width:18px;height:18px;flex-shrink:0;margin-top:3px;stroke:var(--gold);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
 /* ── HOSPEDAJE ── */
@@ -202,15 +204,15 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 #regalos .heading{color:var(--gold-light)}
 .gift-msg{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:19px;line-height:1.75;color:rgba(252,246,234,.78);text-align:center;margin:0 auto 28px;max-width:340px}
 .gift-opts{display:flex;flex-direction:column;gap:14px;max-width:360px;margin:0 auto}
-.gift-opt{background:rgba(252,246,234,.05);border:1px solid rgba(168,123,61,.28);border-radius:4px;padding:28px 24px;text-align:center;position:relative}
-.gift-opt::before{content:'';position:absolute;inset:8px;border:1px solid rgba(168,123,61,.12);pointer-events:none}
+.gift-opt{background:rgba(252,246,234,.05);border:1px solid rgba(189,78,30,.28);border-radius:4px;padding:28px 24px;text-align:center;position:relative}
+.gift-opt::before{content:'';position:absolute;inset:8px;border:1px solid rgba(189,78,30,.12);pointer-events:none}
 .gift-bank-lbl{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);display:block;margin-bottom:8px}
 .gift-bank-name{font-family:'Great Vibes',cursive;font-size:34px;color:var(--gold-light);display:block;margin-bottom:14px;line-height:1.15}
 .gift-detail{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:17px;color:rgba(252,246,234,.78);line-height:1.85}
 .gift-detail strong{color:#FCF6EA;font-weight:600;font-style:normal;letter-spacing:.04em}
 .gift-clabe{font-size:21px;letter-spacing:.06em;color:#FCF6EA}
-.btn-copy{display:inline-flex;align-items:center;gap:6px;background:rgba(168,123,61,.16);border:1px solid rgba(168,123,61,.34);color:var(--gold-light);font-family:'Italiana',serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;padding:11px 20px;border-radius:50px;cursor:pointer;margin-top:16px;transition:background .2s}
-.btn-copy:hover{background:rgba(168,123,61,.3)}
+.btn-copy{display:inline-flex;align-items:center;gap:6px;background:rgba(189,78,30,.16);border:1px solid rgba(189,78,30,.34);color:var(--gold-light);font-family:'Italiana',serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;padding:11px 20px;border-radius:50px;cursor:pointer;margin-top:16px;transition:background .2s}
+.btn-copy:hover{background:rgba(189,78,30,.3)}
 .btn-copy svg{width:12px;height:12px;fill:currentColor}
 .copy-toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-family:'Italiana',serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:10px 24px;border-radius:50px;opacity:0;pointer-events:none;z-index:9999;transition:opacity .3s}
 .copy-toast.show{opacity:1}
@@ -221,10 +223,10 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 #album .eyebrow{color:var(--gold-light)}
 #album .heading{color:var(--gold-light)}
 .album-msg{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:19px;line-height:1.75;color:rgba(252,246,234,.82);text-align:center;margin:0 auto 26px;max-width:340px;position:relative}
-.album-qr{width:148px;height:148px;margin:0 auto 22px;background:#FCF6EA;border:1px solid rgba(168,123,61,.4);border-radius:6px;padding:10px;position:relative}
+.album-qr{width:148px;height:148px;margin:0 auto 22px;background:#FCF6EA;border:1px solid rgba(189,78,30,.4);border-radius:6px;padding:10px;position:relative}
 .album-qr img{width:100%;height:100%;display:block}
-.btn-album{display:inline-flex;align-items:center;gap:9px;background:rgba(168,123,61,.16);border:1px solid rgba(168,123,61,.4);color:var(--gold-light);text-decoration:none;font-family:'Italiana',serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;padding:14px 28px;border-radius:50px;transition:background .3s;position:relative}
-.btn-album:hover{background:rgba(168,123,61,.3)}
+.btn-album{display:inline-flex;align-items:center;gap:9px;background:rgba(189,78,30,.16);border:1px solid rgba(189,78,30,.4);color:var(--gold-light);text-decoration:none;font-family:'Italiana',serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;padding:14px 28px;border-radius:50px;transition:background .3s;position:relative}
+.btn-album:hover{background:rgba(189,78,30,.3)}
 .btn-album svg{width:15px;height:15px;fill:currentColor}
 
 /* ── RSVP ── */
@@ -237,14 +239,14 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 /* ── FOOTER ── */
 #footer{padding:64px 30px 48px;text-align:center;background:var(--dark)}
 .footer-names{font-family:'Great Vibes',cursive;font-size:52px;color:var(--gold-light)}
-.footer-date{font-family:'Italiana',serif;font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:rgba(207,174,118,.65);margin-top:12px}
+.footer-date{font-family:'Italiana',serif;font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:rgba(221,165,121,.65);margin-top:12px}
 .footer-hr{width:40px;height:1px;background:var(--gold);margin:24px auto 16px;opacity:.25}
-.footer-credit{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:.5px;color:rgba(207,174,118,.5);text-decoration:none;display:block;transition:color .3s}
+.footer-credit{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:.5px;color:rgba(221,165,121,.5);text-decoration:none;display:block;transition:color .3s}
 .footer-credit:hover{color:var(--gold-light)}
 
 /* ── MUSIC ── */
-.music-fab{position:fixed;bottom:24px;right:24px;width:52px;height:52px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;z-index:998;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(111,112,66,.45);color:#fff}
-.music-fab::after{content:'';position:absolute;inset:0;border-radius:50%;background:var(--accent);animation:fabpulse 2.2s ease-out infinite;z-index:-1}
+.music-fab{position:fixed;bottom:24px;right:24px;width:52px;height:52px;border-radius:50%;background:var(--blue);border:none;cursor:pointer;z-index:998;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(2,0,107,.4);color:#fff}
+.music-fab::after{content:'';position:absolute;inset:0;border-radius:50%;background:var(--blue);animation:fabpulse 2.2s ease-out infinite;z-index:-1}
 @keyframes fabpulse{0%{transform:scale(1);opacity:.45}100%{transform:scale(1.85);opacity:0}}
 .music-fab svg{width:19px;height:19px;fill:currentColor}
 .music-fab.playing .ic-play{display:none}
@@ -281,10 +283,10 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
     <div class="hero-bg"></div>
     <div class="hero-veil"></div>
     <div class="hero-frame">
-      <div class="hero-corner hc-tl"><svg viewBox="0 0 24 24" fill="none"><path d="M1 1L1 11M1 1L11 1" stroke="#CFAE76" stroke-width="1.4" opacity=".75"/></svg></div>
-      <div class="hero-corner hc-tr"><svg viewBox="0 0 24 24" fill="none"><path d="M1 1L1 11M1 1L11 1" stroke="#CFAE76" stroke-width="1.4" opacity=".75"/></svg></div>
-      <div class="hero-corner hc-bl"><svg viewBox="0 0 24 24" fill="none"><path d="M1 1L1 11M1 1L11 1" stroke="#CFAE76" stroke-width="1.4" opacity=".75"/></svg></div>
-      <div class="hero-corner hc-br"><svg viewBox="0 0 24 24" fill="none"><path d="M1 1L1 11M1 1L11 1" stroke="#CFAE76" stroke-width="1.4" opacity=".75"/></svg></div>
+      <div class="hero-corner hc-tl"><svg viewBox="0 0 24 24" fill="none"><path d="M1 1L1 11M1 1L11 1" stroke="#E0A074" stroke-width="1.4" opacity=".75"/></svg></div>
+      <div class="hero-corner hc-tr"><svg viewBox="0 0 24 24" fill="none"><path d="M1 1L1 11M1 1L11 1" stroke="#E0A074" stroke-width="1.4" opacity=".75"/></svg></div>
+      <div class="hero-corner hc-bl"><svg viewBox="0 0 24 24" fill="none"><path d="M1 1L1 11M1 1L11 1" stroke="#E0A074" stroke-width="1.4" opacity=".75"/></svg></div>
+      <div class="hero-corner hc-br"><svg viewBox="0 0 24 24" fill="none"><path d="M1 1L1 11M1 1L11 1" stroke="#E0A074" stroke-width="1.4" opacity=".75"/></svg></div>
     </div>
     <div class="hero-content">
       <span class="hero-tag rv">Zimapán, Hidalgo · 2026</span>
@@ -416,32 +418,32 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
     <div class="dc-cols rv">
       <div class="dc-col">
         <svg viewBox="0 0 64 80" width="60" height="76" fill="none">
-          <circle cx="32" cy="12" r="9" stroke="#A87B3D" stroke-width="1.5"/>
-          <path d="M22 21L32 27L42 21" stroke="#A87B3D" stroke-width="1.3" stroke-linecap="round"/>
-          <path d="M32 27L30 38L32 43L34 38Z" fill="rgba(168,123,61,.22)" stroke="#6F7042" stroke-width="1.1"/>
-          <path d="M22 21L14 36L16 58L32 54" stroke="#382617" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M42 21L50 36L48 58L32 54" stroke="#382617" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M16 58L18 78M48 58L46 78" stroke="#382617" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="32" cy="12" r="9" stroke="#BD4E1E" stroke-width="1.5"/>
+          <path d="M22 21L32 27L42 21" stroke="#BD4E1E" stroke-width="1.3" stroke-linecap="round"/>
+          <path d="M32 27L30 38L32 43L34 38Z" fill="rgba(189,78,30,.22)" stroke="#7D3131" stroke-width="1.1"/>
+          <path d="M22 21L14 36L16 58L32 54" stroke="#3A1E16" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M42 21L50 36L48 58L32 54" stroke="#3A1E16" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16 58L18 78M48 58L46 78" stroke="#3A1E16" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
         <div class="dc-col-ttl">Caballeros</div>
       </div>
       <div class="dc-col">
         <svg viewBox="0 0 64 80" width="60" height="76" fill="none">
-          <circle cx="32" cy="11" r="9" stroke="#A87B3D" stroke-width="1.5"/>
-          <path d="M23 8 Q26 2 32 3 Q38 2 41 8" stroke="#A87B3D" stroke-width="1.3" fill="rgba(168,123,61,.12)" stroke-linecap="round"/>
-          <path d="M23 22Q20 28 20 34L16 58L48 58L44 34Q44 28 41 22Z" fill="rgba(168,123,61,.1)" stroke="#6F7042" stroke-width="1.3" stroke-linejoin="round"/>
-          <path d="M16 58Q12 72 32 76Q52 72 48 58Z" fill="rgba(168,123,61,.15)" stroke="#6F7042" stroke-width="1.3"/>
+          <circle cx="32" cy="11" r="9" stroke="#BD4E1E" stroke-width="1.5"/>
+          <path d="M23 8 Q26 2 32 3 Q38 2 41 8" stroke="#BD4E1E" stroke-width="1.3" fill="rgba(189,78,30,.12)" stroke-linecap="round"/>
+          <path d="M23 22Q20 28 20 34L16 58L48 58L44 34Q44 28 41 22Z" fill="rgba(189,78,30,.1)" stroke="#7D3131" stroke-width="1.3" stroke-linejoin="round"/>
+          <path d="M16 58Q12 72 32 76Q52 72 48 58Z" fill="rgba(189,78,30,.15)" stroke="#7D3131" stroke-width="1.3"/>
         </svg>
         <div class="dc-col-ttl">Damas</div>
       </div>
     </div>
     <span class="dc-pal-lbl">Paleta sugerida</span>
     <div class="dc-pal-row">
+      <div class="dc-sw"><span class="dc-circle" style="background:#BD4E1E"></span><span class="dc-name">Terracota</span></div>
+      <div class="dc-sw"><span class="dc-circle" style="background:#7D3131"></span><span class="dc-name">Vino</span></div>
       <div class="dc-sw"><span class="dc-circle" style="background:#A0804E"></span><span class="dc-name">Camel</span></div>
-      <div class="dc-sw"><span class="dc-circle" style="background:#6F7042"></span><span class="dc-name">Olivo</span></div>
+      <div class="dc-sw"><span class="dc-circle" style="background:#D4C5B2"></span><span class="dc-name">Arena</span></div>
       <div class="dc-sw"><span class="dc-circle" style="background:#5C442C"></span><span class="dc-name">Marrón</span></div>
-      <div class="dc-sw"><span class="dc-circle" style="background:#CDBFA4"></span><span class="dc-name">Arena</span></div>
-      <div class="dc-sw"><span class="dc-circle" style="background:#7A3B2E"></span><span class="dc-name">Terracota</span></div>
     </div>
     <span class="dc-avoid-lbl">Por favor evita</span>
     <div class="dc-pal-row">
@@ -507,7 +509,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
   <section id="regalos" class="sec rv" style="text-align:center">
     <span class="eyebrow">Mesa de Regalos</span>
     <h2 class="heading">Un Obsequio</h2>
-    <div class="orn" style="margin-top:16px"><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(168,123,61,.45),transparent)"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(168,123,61,.45),transparent)"></div></div>
+    <div class="orn" style="margin-top:16px"><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(189,78,30,.45),transparent)"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(189,78,30,.45),transparent)"></div></div>
     <p class="gift-msg rv">Tu presencia es nuestro regalo más preciado.<br>Si además deseas obsequiarnos algo, con infinita gratitud lo recibimos.</p>
     <div class="gift-opts rv">
       <div class="gift-opt">
@@ -530,7 +532,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
     <div class="album-bg"></div>
     <span class="eyebrow">Comparte el Momento</span>
     <h2 class="heading">Álbum de Recuerdos</h2>
-    <div class="orn" style="margin-top:16px;position:relative"><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(168,123,61,.45),transparent)"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(168,123,61,.45),transparent)"></div></div>
+    <div class="orn" style="margin-top:16px;position:relative"><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(189,78,30,.45),transparent)"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(189,78,30,.45),transparent)"></div></div>
     <p class="album-msg rv">Ayúdanos a guardar cada instante. Escanea el código y sube tus fotos y videos a nuestro álbum compartido — será nuestro recuerdo colectivo de este día.</p>
     <!-- PENDIENTE: reemplazar el QR y el botón por el enlace real del álbum compartido (Google Fotos / Drive) cuando el cliente lo proporcione. Por ahora apuntan a la propia invitación. -->
     <div class="album-qr rv"><img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=0&data=https%3A%2F%2Fboda-barbara-y-esteban.vercel.app" alt="Código QR del álbum"></div>
@@ -556,7 +558,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 
   <!-- FOOTER -->
   <footer id="footer">
-    <div class="orn" style="margin-bottom:24px"><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(168,123,61,.35),transparent)"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(168,123,61,.35),transparent)"></div></div>
+    <div class="orn" style="margin-bottom:24px"><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(189,78,30,.35),transparent)"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(189,78,30,.35),transparent)"></div></div>
     <div class="footer-names rv">Bárbara &amp; Esteban</div>
     <div class="footer-date rv">31 · Octubre · 2026</div>
     <div class="footer-hr"></div>
@@ -624,7 +626,7 @@ function initEnvelope(){
 /* ── HOJAS / PÉTALOS OTOÑALES ── */
 function launchPetals(){
   const container=document.getElementById('petals');
-  const colors=['#A87B3D','#6F7042','#CFAE76','#8C6B3A','#5C442C'];
+  const colors=['#BD4E1E','#7D3131','#E0A074','#8C6B3A','#5C442C'];
   for(let i=0;i<20;i++){
     setTimeout(()=>{
       const p=document.createElement('div');
