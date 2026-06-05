@@ -45,15 +45,15 @@ html,body{overflow-x:hidden;max-width:100vw}
 html{scroll-behavior:auto}
 body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:500;font-size:18px;line-height:1.65;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 
-/* ── PAGE FRAME (marco de pergamino persistente) ── */
-#pageframe{position:fixed;top:0;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:460px;pointer-events:none;z-index:900}
-#pageframe::before{content:'';position:absolute;inset:9px;border:2px solid var(--frameline)}
-#pageframe::after{content:'';position:absolute;inset:14px;border:1px solid rgba(110,78,42,.28)}
-#pageframe .cnr{position:absolute;width:34px;height:34px;color:var(--terra);opacity:.85}
-#pageframe .cnr-tl{top:5px;left:5px}
-#pageframe .cnr-tr{top:5px;right:5px;transform:scaleX(-1)}
-#pageframe .cnr-bl{bottom:5px;left:5px;transform:scaleY(-1)}
-#pageframe .cnr-br{bottom:5px;right:5px;transform:scale(-1)}
+/* ── SECTION FRAME (marco ornamentado por sección, no global) ── */
+.frame{position:absolute;inset:14px;pointer-events:none;z-index:1}
+.frame::before{content:'';position:absolute;inset:0;border:1.5px solid var(--frameline)}
+.frame::after{content:'';position:absolute;inset:5px;border:1px solid rgba(110,78,42,.22)}
+.frame .cnr{position:absolute;width:30px;height:30px;color:var(--terra);opacity:.85;z-index:2}
+.frame .cnr-tl{top:-6px;left:-6px}
+.frame .cnr-tr{top:-6px;right:-6px;transform:scaleX(-1)}
+.frame .cnr-bl{bottom:-6px;left:-6px;transform:scaleY(-1)}
+.frame .cnr-br{bottom:-6px;right:-6px;transform:scale(-1)}
 
 /* ── ENVELOPE ── */
 #envelope-screen{position:fixed;inset:0;z-index:9000;overflow:hidden;cursor:pointer;background:#2a1c10}
@@ -88,7 +88,7 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .sec>*,.sec-sm>*{position:relative;z-index:1}
 
 /* engraving motif overlays */
-.eng-motif{position:absolute;left:0;right:0;pointer-events:none;mix-blend-mode:multiply;opacity:.34;z-index:0}
+.eng-motif{position:absolute;left:0;right:0;pointer-events:none;mix-blend-mode:multiply;opacity:.4;z-index:0;-webkit-mask-image:linear-gradient(to top,#000 38%,rgba(0,0,0,.5) 70%,transparent 100%);mask-image:linear-gradient(to top,#000 38%,rgba(0,0,0,.5) 70%,transparent 100%)}
 .eng-bottom{bottom:0;width:100%;height:auto}
 
 /* ── DIVIDER / CREST ── */
@@ -107,7 +107,7 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .quote{font-family:var(--serif);font-style:italic;font-weight:500;font-size:21px;line-height:1.6;color:var(--ink);text-align:center;max-width:360px;margin:0 auto}
 
 /* ── SCROLL HINT ── */
-.scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:1;transition:opacity .7s;white-space:nowrap}
+.scroll-hint{position:absolute;bottom:34px;left:36px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:1;transition:opacity .7s;white-space:nowrap}
 .scroll-hint.hidden{opacity:0;pointer-events:none}
 .scroll-hint-txt{font-family:var(--label);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent)}
 .scroll-hint-arrow{animation:scrollbounce 1.8s ease-in-out infinite}
@@ -119,9 +119,9 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 #hero::after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px rgba(74,46,22,.22)}
 .hero-content{position:relative;z-index:2;width:100%}
 .hero-tag{font-family:var(--title);font-weight:600;font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:18px}
-.hero-names{font-family:var(--display);font-weight:900;font-size:clamp(40px,11vw,62px);color:var(--ink);line-height:1.08;letter-spacing:.01em;display:block}
+.hero-names{font-family:var(--display);font-weight:900;font-size:clamp(38px,10vw,58px);color:var(--ink);line-height:1.04;letter-spacing:.005em;display:block;text-wrap:balance}
 .hero-amp{display:block;font-family:var(--display);font-weight:400;font-size:.5em;color:var(--terra);margin:.04em 0}
-.hero-eng{display:block;width:min(74%,300px);margin:22px auto 6px;mix-blend-mode:multiply;opacity:.92}
+.hero-eng{display:block;width:min(74%,300px);margin:22px auto 6px;mix-blend-mode:multiply;opacity:.95;filter:contrast(1.04) saturate(.9);-webkit-mask-image:radial-gradient(ellipse 92% 96% at 50% 52%,#000 58%,rgba(0,0,0,.5) 78%,transparent 100%);mask-image:radial-gradient(ellipse 92% 96% at 50% 52%,#000 58%,rgba(0,0,0,.5) 78%,transparent 100%)}
 .hero-quote{font-family:var(--serif);font-style:italic;font-weight:500;font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:330px;margin:14px auto 0}
 .hero-date{font-family:var(--title);font-weight:600;font-size:16px;letter-spacing:.12em;color:var(--ink);margin-top:22px;display:block}
 .hero-place{font-family:var(--label);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-top:8px;display:block}
@@ -143,7 +143,7 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .fam-card{background:var(--card);border:1px solid var(--border);padding:24px 14px;text-align:center;position:relative}
 .fam-card::before{content:'';position:absolute;inset:7px;border:1px solid var(--border-light);pointer-events:none}
 .fam-role-lbl{font-family:var(--label);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:14px}
-.fam-name{font-family:var(--title);font-weight:600;font-size:17px;letter-spacing:.02em;color:var(--ink);line-height:1.35;display:block}
+.fam-name{font-family:var(--title);font-weight:600;font-size:15px;letter-spacing:.02em;color:var(--ink);line-height:1.4;display:block;text-transform:uppercase;hyphens:auto;-webkit-hyphens:auto}
 .fam-and{display:flex;align-items:center;gap:8px;margin:8px 0}
 .fam-and-line{flex:1;height:1px;background:var(--border)}
 .fam-and-txt{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--accent)}
@@ -167,7 +167,7 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 
 /* ── ITINERARIO ── */
 .itin-list{display:flex;flex-direction:column;gap:0;margin-top:24px;position:relative}
-.itin-list::before{content:'';position:absolute;left:50%;transform:translateX(-50%);top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--border),transparent)}
+.itin-list::before{content:'';position:absolute;left:50%;transform:translateX(-50%);top:14px;bottom:14px;width:1px;background:linear-gradient(to bottom,transparent 0%,rgba(110,78,42,.55) 14%,rgba(110,78,42,.55) 86%,transparent 100%)}
 .itin-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding:22px 16px 10px;position:relative;z-index:1}
 .itin-dot{width:9px;height:9px;background:var(--terra);transform:rotate(45deg);margin-bottom:14px;box-shadow:0 0 0 4px rgba(189,78,30,.12)}
 .itin-dot.sage{background:var(--ringgold);box-shadow:0 0 0 4px rgba(176,136,63,.14)}
@@ -188,6 +188,7 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .dc-name{font-family:var(--serif);font-weight:600;font-size:13px;color:var(--ink);text-align:center;max-width:64px;line-height:1.35}
 .dc-avoid-lbl{font-family:var(--label);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);text-align:center;display:block;margin:22px 0 12px}
 .no-kids{display:flex;align-items:flex-start;gap:14px;border:1px solid var(--border);padding:18px;margin-top:24px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:17px;color:var(--ink);line-height:1.65;background:rgba(255,251,242,.4)}
+.no-kids strong{font-family:var(--title);font-style:normal;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;font-size:.92em}
 .no-kids svg{width:18px;height:18px;flex-shrink:0;margin-top:3px;stroke:var(--terra);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
 /* ── HOSPEDAJE ── */
@@ -206,7 +207,7 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .gal-track::-webkit-scrollbar{display:none}
 .gal-slide{flex:0 0 80%;scroll-snap-align:center;position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--surface,#e9d6b2);border:1px solid var(--border)}
 .gal-slide::after{content:'';position:absolute;inset:7px;border:1px solid rgba(247,239,221,.5);pointer-events:none;z-index:2}
-.gal-slide img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(.18) saturate(1.02) contrast(1.03)}
+.gal-slide img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(.65) saturate(.85) contrast(1.08) brightness(.94) hue-rotate(-6deg)}
 .gal-cap{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:34px 16px 14px;background:linear-gradient(to top,rgba(46,28,16,.78),transparent);font-family:var(--serif);font-style:italic;font-weight:600;font-size:16px;color:var(--cream);text-align:left}
 .gal-dots{display:flex;justify-content:center;gap:9px;margin-top:18px}
 .gal-dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;padding:0;cursor:pointer;transition:all .3s;flex-shrink:0}
@@ -252,15 +253,15 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .btn-wa svg{width:21px;height:21px;fill:currentColor;flex-shrink:0}
 
 /* ── FOOTER ── */
-#footer{padding:70px 32px 56px;text-align:center;position:relative;overflow:hidden}
-.footer-names{font-family:var(--display);font-weight:700;font-size:30px;letter-spacing:.02em;color:var(--cream)}
+#footer{padding:80px 32px 64px;text-align:center;position:relative;overflow:hidden}
+.footer-names{font-family:var(--title);font-weight:600;font-size:24px;letter-spacing:.08em;color:var(--cream);text-transform:uppercase}
 .footer-date{font-family:var(--label);font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--ringgold);margin-top:12px}
 .footer-hr{width:40px;height:1px;background:var(--ringgold);margin:24px auto 16px;opacity:.4}
 .footer-credit{font-family:var(--serif);font-style:italic;font-size:13px;letter-spacing:.5px;color:var(--cream-soft);text-decoration:none;display:block;transition:color .3s;opacity:.7}
 .footer-credit:hover{color:var(--cream)}
 
 /* ── MUSIC ── */
-.music-fab{position:fixed;bottom:24px;right:24px;width:52px;height:52px;border-radius:50%;background:var(--dark);border:1px solid rgba(176,136,63,.5);cursor:pointer;z-index:998;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(46,28,16,.5);color:var(--ringgold)}
+.music-fab{position:fixed;bottom:22px;right:18px;width:46px;height:46px;border-radius:50%;background:rgba(46,28,16,.88);border:1px solid rgba(176,136,63,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);cursor:pointer;z-index:998;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(46,28,16,.45);color:var(--ringgold)}
 .music-fab::after{content:'';position:absolute;inset:0;border-radius:50%;background:var(--dark);animation:fabpulse 2.4s ease-out infinite;z-index:-1}
 @keyframes fabpulse{0%{transform:scale(1);opacity:.4}100%{transform:scale(1.8);opacity:0}}
 .music-fab svg{width:18px;height:18px;fill:currentColor}
@@ -296,13 +297,6 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
   </symbol>
 </defs></svg>
 
-<div id="pageframe">
-  <svg class="cnr cnr-tl"><use href="#cnr"/></svg>
-  <svg class="cnr cnr-tr"><use href="#cnr"/></svg>
-  <svg class="cnr cnr-bl"><use href="#cnr"/></svg>
-  <svg class="cnr cnr-br"><use href="#cnr"/></svg>
-</div>
-
 <div id="petals"></div>
 
 <div id="envelope-screen">
@@ -325,12 +319,19 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 
   <!-- HERO -->
   <section id="hero">
+    <div class="frame">
+      <svg class="cnr cnr-tl"><use href="#cnr"/></svg>
+      <svg class="cnr cnr-tr"><use href="#cnr"/></svg>
+      <svg class="cnr cnr-bl"><use href="#cnr"/></svg>
+      <svg class="cnr cnr-br"><use href="#cnr"/></svg>
+    </div>
     <div class="hero-content rv">
       <span class="hero-tag">Bienvenido a la boda de</span>
       <span class="hero-names">Bárbara<span class="hero-amp">&amp;</span>Esteban</span>
       <img class="hero-eng" src="hero-engraving.jpg" alt="Grabado antiguo de una catedral">
       <p class="hero-quote">«No andábamos buscándonos,<br>pero andábamos para encontrarnos…»</p>
-      <span class="hero-date">31 de Octubre de 2026 · 12:00 pm</span>
+      <span class="hero-date">31&nbsp;de&nbsp;Octubre&nbsp;de&nbsp;2026</span>
+      <span class="hero-date" style="margin-top:6px;font-size:14px;letter-spacing:.18em">12:00&nbsp;p.m.</span>
       <span class="hero-place">Zimapán · Hidalgo</span>
     </div>
     <div class="scroll-hint" id="scrollHint">
@@ -375,15 +376,15 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
     <div class="fam-grid rv">
       <div class="fam-card">
         <span class="fam-role-lbl">Padres de la Novia</span>
-        <span class="fam-name">Luis Antonio<br>Álvarez Cisneros</span>
+        <span class="fam-name">Luis Antonio Álvarez Cisneros</span>
         <div class="fam-and"><div class="fam-and-line"></div><span class="fam-and-txt">y</span><div class="fam-and-line"></div></div>
-        <span class="fam-name">América<br>Aquino Alvarado</span>
+        <span class="fam-name">América Aquino Alvarado</span>
       </div>
       <div class="fam-card">
         <span class="fam-role-lbl">Padres del Novio</span>
-        <span class="fam-name">Salvador<br>Infante Hoyos</span>
+        <span class="fam-name">Salvador Infante Hoyos</span>
         <div class="fam-and"><div class="fam-and-line"></div><span class="fam-and-txt">y</span><div class="fam-and-line"></div></div>
-        <span class="fam-name">Elizabeth<br>Carrillo Camacho</span>
+        <span class="fam-name">Elizabeth Carrillo Camacho</span>
       </div>
     </div>
     <!-- PENDIENTE: nombres de padrinos (el cliente los dejó "por confirmar") -->
@@ -594,6 +595,12 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 
   <!-- FOOTER -->
   <footer id="footer" class="sec-dark">
+    <div class="frame">
+      <svg class="cnr cnr-tl" style="color:var(--ringgold)"><use href="#cnr"/></svg>
+      <svg class="cnr cnr-tr" style="color:var(--ringgold)"><use href="#cnr"/></svg>
+      <svg class="cnr cnr-bl" style="color:var(--ringgold)"><use href="#cnr"/></svg>
+      <svg class="cnr cnr-br" style="color:var(--ringgold)"><use href="#cnr"/></svg>
+    </div>
     <div class="divider"><i></i><svg class="dv"><use href="#rings"/></svg><i></i></div>
     <svg class="crest crest-sm rv" style="margin-bottom:18px"><use href="#crest"/></svg>
     <div class="footer-names rv">Bárbara &amp; Esteban</div>
