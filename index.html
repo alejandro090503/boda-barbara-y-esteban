@@ -78,15 +78,15 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .petal{position:absolute;top:-40px;will-change:transform}
 
 /* ── LAYOUT ── */
-.wrap{max-width:460px;margin:0 auto;overflow:hidden;position:relative;z-index:1;visibility:hidden;background:#efe1c4 url('bg-parch.jpg') center/cover}
+.wrap{max-width:460px;margin:0 auto;overflow:hidden;position:relative;z-index:1;visibility:hidden;background:#efe1c4}
 .rv{opacity:0}
-.sec{padding:min(11vh,86px) 32px;position:relative;background:transparent;overflow:hidden}
-.sec-sm{padding:min(7vh,54px) 32px;position:relative;background:transparent;overflow:hidden}
-/* Secciones oscuras: cápsula con transición suave arriba y abajo */
-.sec-dark{background:transparent;position:relative}
-.sec-dark::before{content:'';position:absolute;left:0;right:0;top:0;bottom:0;background:url('bg-parch-dark.jpg') center/cover;-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0%,#000 12%,#000 88%,transparent 100%);z-index:0;pointer-events:none}
-.sec-dark>*{position:relative;z-index:1}
+.sec{padding:min(11vh,86px) 32px;position:relative;background:#efe1c4 url('bg-parch.jpg') center/cover;overflow:hidden}
+.sec-sm{padding:min(7vh,54px) 32px;position:relative;background:#efe1c4 url('bg-parch.jpg') center/cover;overflow:hidden}
 .sec>*,.sec-sm>*{position:relative;z-index:1}
+/* Secciones oscuras: pergamino oscuro propio + cápsula con fundido superior/inferior hacia el pergamino claro */
+.sec-dark{background:#efe1c4 url('bg-parch.jpg') center/cover;position:relative}
+.sec-dark::before{content:'';position:absolute;left:0;right:0;top:0;bottom:0;background:url('bg-parch-dark.jpg') center/cover;background-color:#2c1a0e;-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 10%,#000 90%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0%,#000 10%,#000 90%,transparent 100%);z-index:0;pointer-events:none}
+.sec-dark>*{position:relative;z-index:1}
 
 /* engraving motif overlays */
 .eng-motif{position:absolute;left:0;right:0;pointer-events:none;mix-blend-mode:multiply;opacity:.4;z-index:0;-webkit-mask-image:linear-gradient(to top,#000 38%,rgba(0,0,0,.5) 70%,transparent 100%);mask-image:linear-gradient(to top,#000 38%,rgba(0,0,0,.5) 70%,transparent 100%)}
