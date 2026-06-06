@@ -117,14 +117,14 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 
 /* ── HERO PREMIUM (foto reales) ── */
 #hero{position:relative;min-height:100dvh;display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;text-align:center;padding:0;overflow:hidden;isolation:isolate;color:#FCEFD3}
-.hero-bg{position:absolute;inset:0;background:#241409 url('hero-novios.jpg') center bottom/cover no-repeat;z-index:-3;animation:heroKen 18s ease-in-out infinite alternate}
-@keyframes heroKen{from{transform:scale(1.04) translateY(0)}to{transform:scale(1.08) translateY(-1.5%)}}
-/* Veil de dos zonas: oscurece arriba y abajo para texto, deja libre el centro (caras) */
-.hero-veil{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(20,10,4,.92) 0%,rgba(20,10,4,.88) 18%,rgba(20,10,4,.6) 32%,rgba(20,10,4,.12) 44%,rgba(20,10,4,.12) 58%,rgba(20,10,4,.6) 76%,rgba(20,10,4,.9) 92%,rgba(20,10,4,.96) 100%)}
+.hero-bg{position:absolute;inset:0;background:#241409 url('hero-novios.jpg') center/cover no-repeat;z-index:-3;animation:heroKen 18s ease-in-out infinite alternate}
+@keyframes heroKen{from{transform:scale(1.02) translateY(0)}to{transform:scale(1.06) translateY(-1%)}}
+/* Veil de dos zonas: oscurece SOLO arriba (cielo donde va el texto) y abajo (zona del quote) */
+.hero-veil{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(20,10,4,.88) 0%,rgba(20,10,4,.6) 14%,rgba(20,10,4,.08) 28%,rgba(20,10,4,.08) 58%,rgba(20,10,4,.55) 76%,rgba(20,10,4,.9) 92%,rgba(20,10,4,.96) 100%)}
 /* fade hacia el pergamino que viene abajo */
 .hero-fadeout{position:absolute;left:0;right:0;bottom:0;height:130px;z-index:-1;pointer-events:none;background:linear-gradient(to bottom,transparent 0%,#efe1c4 100%)}
 /* TOP — eyebrow + nombres en la parte superior */
-.hero-top{position:relative;z-index:2;padding:78px 34px 0;display:flex;flex-direction:column;align-items:center}
+.hero-top{position:relative;z-index:2;padding:64px 34px 0;display:flex;flex-direction:column;align-items:center}
 .hero-tag{font-family:var(--title);font-weight:700;font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:#F5C97A;display:block;margin-bottom:18px;text-shadow:0 2px 10px rgba(0,0,0,.85)}
 .hero-names{font-family:var(--display);font-weight:900;font-size:clamp(46px,12.5vw,68px);color:#FDF1D2;line-height:.96;letter-spacing:.01em;display:block;text-wrap:balance;text-shadow:0 4px 28px rgba(0,0,0,.85),0 2px 6px rgba(0,0,0,.6)}
 .hero-amp{display:block;font-family:var(--display);font-weight:400;font-size:.42em;color:#F5C97A;margin:.08em 0;text-shadow:0 2px 12px rgba(0,0,0,.8)}
@@ -388,7 +388,6 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
     <video class="env-video" id="envVideo" src="apertura.mp4" muted playsinline preload="metadata" poster="sobre.jpg"></video>
   </div>
   <div class="env-veil"></div>
-  <span class="env-eyebrow-top">Nos casamos<small>Zimapán · XXXI · X · MMXXVI</small></span>
   <div class="env-tap" id="envTap">Toca para abrir</div>
 </div>
 
