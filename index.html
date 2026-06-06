@@ -16,6 +16,8 @@
 <meta name="twitter:description" content="Nuestra boda religiosa en Zimapán, Hidalgo.">
 <meta name="twitter:image" content="https://boda-barbara-y-esteban.vercel.app/og-image.jpg">
 <meta name="theme-color" content="#2E1C10">
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+<meta name="x-apple-disable-message-reformatting" content="true">
 <script>if('scrollRestoration' in history){history.scrollRestoration='manual';}window.scrollTo(0,0);</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,20 +58,18 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .frame .cnr-br{bottom:-6px;right:-6px;transform:scale(-1)}
 
 /* ── ENVELOPE ── */
-#envelope-screen{position:fixed;inset:0;z-index:9000;overflow:hidden;cursor:pointer;background:#2a1c10}
-.env-bg{position:absolute;inset:0;background:#e9d6b2 url('bg-parch.jpg') center/cover no-repeat}
-.env-eng{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:min(72%,330px);opacity:.5;mix-blend-mode:multiply;pointer-events:none}
-.env-veil{position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 40%,transparent 40%,rgba(60,40,20,.28))}
-.env-frame{position:absolute;inset:16px;border:2px solid rgba(110,78,42,.55);pointer-events:none}
-.env-frame::before{content:'';position:absolute;inset:6px;border:1px solid rgba(110,78,42,.3)}
-.env-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 36px;z-index:2}
-.env-eyebrow{font-family:var(--title);font-weight:600;font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
-.env-mono{font-family:var(--display);font-weight:900;font-size:74px;color:var(--ink);line-height:1}
-.env-mono span{color:var(--terra);font-size:.72em;margin:0 .04em}
-.env-names{font-family:var(--display);font-weight:700;font-size:30px;letter-spacing:.02em;color:var(--ink);margin-top:16px}
-.env-date{font-family:var(--label);font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--accent);margin-top:18px}
-.env-tap{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);z-index:10;font-family:var(--label);font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink);opacity:0;padding:14px 36px;white-space:nowrap;border:1px solid rgba(110,78,42,.55);background:rgba(247,239,221,.35);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-.env-tap::before{content:'';position:absolute;inset:0;border:1px solid rgba(110,78,42,.4);animation:envpulse 2s ease-out infinite}
+#envelope-screen{position:fixed;inset:0;z-index:9000;overflow:hidden;cursor:pointer;background:#1f140c}
+.env-media-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2}
+.env-img,.env-video{position:absolute;width:100%;height:100%;object-fit:cover;object-position:center;left:0;top:0}
+.env-img{opacity:1;transition:opacity .35s ease}
+.env-img.is-hidden{opacity:0}
+.env-video{opacity:0;transition:opacity .35s ease}
+.env-video.is-playing{opacity:1}
+.env-veil{position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 40%,transparent 40%,rgba(20,12,6,.42));z-index:3;pointer-events:none}
+.env-eyebrow-top{position:absolute;top:54px;left:50%;transform:translateX(-50%);z-index:5;font-family:var(--title);font-weight:700;font-size:11px;letter-spacing:.36em;text-transform:uppercase;color:#5A3712;text-align:center;text-shadow:0 1px 2px rgba(255,235,200,.5);white-space:nowrap}
+.env-eyebrow-top small{display:block;font-size:9px;letter-spacing:.42em;color:#7D3131;margin-top:6px;font-weight:600}
+.env-tap{position:absolute;bottom:64px;left:50%;transform:translateX(-50%);z-index:10;font-family:var(--label);font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:#F4DEB1;opacity:0;padding:14px 36px;white-space:nowrap;border:1px solid rgba(232,184,115,.6);background:rgba(31,20,12,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);text-shadow:0 1px 4px rgba(0,0,0,.4)}
+.env-tap::before{content:'';position:absolute;inset:0;border:1px solid rgba(232,184,115,.45);animation:envpulse 2s ease-out infinite}
 @keyframes envpulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.18);opacity:0}}
 #env-flash{position:fixed;inset:0;z-index:9999;background:#f3e8cf;opacity:0;pointer-events:none}
 
@@ -96,7 +96,7 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .divider{display:flex;align-items:center;justify-content:center;gap:14px;max-width:300px;margin:18px auto}
 .divider i{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--terra),transparent)}
 .divider.bot{margin-top:24px}
-.dv{width:58px;height:28px;flex-shrink:0}
+.dv{width:62px;height:28px;flex-shrink:0;display:block;color:var(--terra)}
 .crest{display:block;margin:0 auto;width:clamp(150px,46vw,196px);height:auto}
 .crest-sm{width:clamp(120px,34vw,150px)}
 
@@ -115,28 +115,32 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .scroll-hint-arrow svg{width:22px;height:22px;stroke:var(--terra);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
 @keyframes scrollbounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 
-/* ── HERO PREMIUM ── */
-#hero{position:relative;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:96px 34px 110px;overflow:hidden;isolation:isolate;color:#FCEFD3}
-.hero-bg{position:absolute;inset:0;background:#241409 url('hero-castle.jpg') center/cover no-repeat;z-index:-3;animation:heroKen 16s ease-in-out infinite alternate}
-@keyframes heroKen{from{transform:scale(1.04) translateY(0)}to{transform:scale(1.12) translateY(-2%)}}
-.hero-veil{position:absolute;inset:0;z-index:-2;background:radial-gradient(120% 90% at 50% 40%,rgba(20,10,4,.32) 0%,rgba(20,10,4,.55) 50%,rgba(20,10,4,.82) 100%),linear-gradient(180deg,rgba(20,10,4,.45) 0%,transparent 26%,transparent 56%,rgba(20,10,4,.85) 100%)}
-/* fade hacia el pergamino que viene abajo (transición suave) */
-.hero-fadeout{position:absolute;left:0;right:0;bottom:0;height:170px;z-index:-1;pointer-events:none;background:linear-gradient(to bottom,transparent 0%,#efe1c4 100%)}
-.hero-content{position:relative;z-index:2;width:100%;max-width:380px;margin:0 auto}
-.hero-tag{font-family:var(--title);font-weight:600;font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:#E8B873;display:block;margin-bottom:24px;text-shadow:0 2px 10px rgba(0,0,0,.7)}
-.hero-names{font-family:var(--display);font-weight:900;font-size:clamp(46px,12.5vw,72px);color:#FDF1D2;line-height:.96;letter-spacing:.01em;display:block;text-wrap:balance;text-shadow:0 4px 28px rgba(0,0,0,.7),0 2px 6px rgba(0,0,0,.5)}
-.hero-amp{display:block;font-family:var(--display);font-weight:400;font-size:.42em;color:#E8B873;margin:.08em 0;text-shadow:0 2px 12px rgba(0,0,0,.6)}
-.hero-rule{display:flex;align-items:center;justify-content:center;gap:12px;max-width:240px;margin:26px auto 0}
-.hero-rule i{flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(232,184,115,.7),transparent)}
-.hero-rule svg{width:42px;height:18px;flex-shrink:0;color:#E8B873;opacity:.85}
-.hero-quote{font-family:var(--serif);font-style:italic;font-weight:500;font-size:18px;line-height:1.6;color:#F0DEB9;max-width:330px;margin:20px auto 0;text-shadow:0 2px 10px rgba(0,0,0,.7)}
-.hero-date{font-family:var(--title);font-weight:700;font-size:17px;letter-spacing:.16em;color:#FDF1D2;margin-top:24px;display:block;text-shadow:0 2px 10px rgba(0,0,0,.7)}
-.hero-date.small{font-size:14px;letter-spacing:.22em;margin-top:6px;color:#E8B873}
-.hero-place{font-family:var(--label);font-size:12px;letter-spacing:.42em;text-transform:uppercase;color:#E8B873;margin-top:14px;display:block;text-shadow:0 2px 8px rgba(0,0,0,.7)}
-/* marco dorado del hero más visible sobre fondo oscuro */
-#hero .frame::before{border-color:rgba(232,184,115,.5)}
-#hero .frame::after{border-color:rgba(232,184,115,.22)}
-#hero .frame .cnr{color:#E8B873;opacity:1}
+/* ── HERO PREMIUM (foto reales) ── */
+#hero{position:relative;min-height:100dvh;display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;text-align:center;padding:0;overflow:hidden;isolation:isolate;color:#FCEFD3}
+.hero-bg{position:absolute;inset:0;background:#241409 url('hero-novios.jpg') center bottom/cover no-repeat;z-index:-3;animation:heroKen 18s ease-in-out infinite alternate}
+@keyframes heroKen{from{transform:scale(1.04) translateY(0)}to{transform:scale(1.08) translateY(-1.5%)}}
+/* Veil de dos zonas: oscurece arriba y abajo para texto, deja libre el centro (caras) */
+.hero-veil{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(20,10,4,.92) 0%,rgba(20,10,4,.88) 18%,rgba(20,10,4,.6) 32%,rgba(20,10,4,.12) 44%,rgba(20,10,4,.12) 58%,rgba(20,10,4,.6) 76%,rgba(20,10,4,.9) 92%,rgba(20,10,4,.96) 100%)}
+/* fade hacia el pergamino que viene abajo */
+.hero-fadeout{position:absolute;left:0;right:0;bottom:0;height:130px;z-index:-1;pointer-events:none;background:linear-gradient(to bottom,transparent 0%,#efe1c4 100%)}
+/* TOP — eyebrow + nombres en la parte superior */
+.hero-top{position:relative;z-index:2;padding:78px 34px 0;display:flex;flex-direction:column;align-items:center}
+.hero-tag{font-family:var(--title);font-weight:700;font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:#F5C97A;display:block;margin-bottom:18px;text-shadow:0 2px 10px rgba(0,0,0,.85)}
+.hero-names{font-family:var(--display);font-weight:900;font-size:clamp(46px,12.5vw,68px);color:#FDF1D2;line-height:.96;letter-spacing:.01em;display:block;text-wrap:balance;text-shadow:0 4px 28px rgba(0,0,0,.85),0 2px 6px rgba(0,0,0,.6)}
+.hero-amp{display:block;font-family:var(--display);font-weight:400;font-size:.42em;color:#F5C97A;margin:.08em 0;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+/* BOTTOM — quote + fecha + lugar */
+.hero-bottom{position:relative;z-index:2;padding:0 34px 130px;display:flex;flex-direction:column;align-items:center}
+.hero-rule{display:flex;align-items:center;justify-content:center;gap:12px;max-width:260px;margin:0 auto 14px;width:100%}
+.hero-rule i{flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(245,201,122,.85),transparent)}
+.hero-rule svg{width:42px;height:18px;flex-shrink:0;color:#F5C97A;opacity:.95}
+.hero-quote{font-family:var(--serif);font-style:italic;font-weight:600;font-size:18px;line-height:1.6;color:#F4E1B5;max-width:340px;margin:0 auto 18px;text-shadow:0 2px 12px rgba(0,0,0,.85)}
+.hero-date{font-family:var(--title);font-weight:700;font-size:17px;letter-spacing:.18em;color:#FDF1D2;margin-top:6px;display:block;text-shadow:0 2px 12px rgba(0,0,0,.85)}
+.hero-date.small{font-size:14px;letter-spacing:.24em;margin-top:6px;color:#F5C97A}
+.hero-place{font-family:var(--label);font-size:12px;letter-spacing:.44em;text-transform:uppercase;color:#F5C97A;margin-top:14px;display:block;text-shadow:0 2px 10px rgba(0,0,0,.85)}
+/* marco dorado del hero más visible */
+#hero .frame::before{border-color:rgba(245,201,122,.55)}
+#hero .frame::after{border-color:rgba(245,201,122,.24)}
+#hero .frame .cnr{color:#F5C97A;opacity:1}
 
 /* ── CARD ── */
 .card{background:var(--card);border:1px solid var(--border);padding:34px 26px;position:relative;margin:0 4px;backdrop-filter:blur(1px)}
@@ -199,6 +203,16 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .dc-circle{width:34px;height:34px;border-radius:50%;border:1px solid var(--border)}
 .dc-name{font-family:var(--serif);font-weight:600;font-size:13px;color:var(--ink);text-align:center;max-width:64px;line-height:1.35}
 .dc-avoid-lbl{font-family:var(--label);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);text-align:center;display:block;margin:22px 0 12px}
+/* ── BOTÓN INSPIRACIÓN PINTEREST ── */
+.btn-inspire{display:flex;align-items:center;justify-content:flex-start;gap:14px;max-width:380px;margin:24px auto 0;padding:18px 22px;background:linear-gradient(180deg,rgba(255,251,242,.85),rgba(255,251,242,.65));border:1px solid var(--border);text-decoration:none;color:var(--ink);position:relative;transition:transform .25s ease,box-shadow .25s ease,background .25s ease;box-shadow:0 2px 0 rgba(110,78,42,.12)}
+.btn-inspire::before{content:'';position:absolute;inset:6px;border:1px solid var(--border-light);pointer-events:none}
+.btn-inspire:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(110,78,42,.22);background:linear-gradient(180deg,rgba(255,251,242,.95),rgba(255,251,242,.75))}
+.btn-inspire-icon{width:32px;height:32px;flex-shrink:0;color:var(--terra)}
+.btn-inspire-txt{display:flex;flex-direction:column;align-items:flex-start;flex:1}
+.btn-inspire-eyebrow{font-family:var(--label);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent)}
+.btn-inspire-title{font-family:var(--title);font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-top:4px}
+.btn-inspire-arrow{width:18px;height:18px;flex-shrink:0;color:var(--terra);opacity:.7}
+
 .no-kids{display:flex;align-items:flex-start;gap:14px;border:1px solid var(--border);padding:18px;margin-top:24px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:17px;color:var(--ink);line-height:1.65;background:rgba(255,251,242,.4)}
 .no-kids strong{font-family:var(--title);font-style:normal;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;font-size:.92em}
 .no-kids svg{width:18px;height:18px;flex-shrink:0;margin-top:3px;stroke:var(--terra);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
@@ -231,7 +245,9 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 /* ── REGALOS / ALBUM (oscuro) ── */
 #regalos .eyebrow,#album .eyebrow{color:var(--ringgold)}
 #regalos .heading,#album .heading{color:var(--cream)}
-#regalos .divider i,#album .divider i{background:linear-gradient(to right,transparent,var(--ringgold),transparent)}
+#regalos .divider i,#album .divider i,#footer .divider i{background:linear-gradient(to right,transparent,var(--ringgold),transparent)}
+#regalos .dv,#album .dv,#footer .dv{color:var(--ringgold)}
+.footer-divider{margin:0 auto 22px!important;width:min(80%,300px)}
 .gift-msg{font-family:var(--serif);font-style:italic;font-weight:500;font-size:19px;line-height:1.75;color:var(--cream-soft);text-align:center;margin:0 auto 28px;max-width:340px}
 .gift-opts{display:flex;flex-direction:column;gap:14px;max-width:360px;margin:0 auto}
 .gift-opt{background:rgba(247,239,221,.06);border:1px solid rgba(176,136,63,.3);padding:28px 24px;text-align:center;position:relative}
@@ -240,7 +256,8 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .gift-bank-name{font-family:var(--title);font-weight:600;font-size:19px;letter-spacing:.02em;color:var(--cream);display:block;margin-bottom:16px;line-height:1.25;text-transform:uppercase}
 .gift-detail{font-family:var(--serif);font-weight:500;font-size:17px;color:var(--cream-soft);line-height:1.85}
 .gift-detail strong{color:var(--cream);font-weight:600;font-style:normal;letter-spacing:.04em}
-.gift-clabe{font-size:21px;letter-spacing:.06em;color:var(--cream)}
+.gift-clabe{font-size:21px;letter-spacing:.18em;color:var(--cream)!important;text-decoration:none!important;pointer-events:none;font-variant-numeric:tabular-nums;display:inline-block;direction:ltr;unicode-bidi:isolate}
+.gift-clabe a,.gift-clabe span{color:inherit!important;text-decoration:none!important}
 .btn-copy{display:inline-flex;align-items:center;gap:6px;background:rgba(176,136,63,.16);border:1px solid rgba(176,136,63,.36);color:var(--ringgold);font-family:var(--label);font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:11px 20px;cursor:pointer;margin-top:16px;transition:background .2s}
 .btn-copy:hover{background:rgba(176,136,63,.3)}
 .btn-copy svg{width:12px;height:12px;fill:currentColor}
@@ -358,25 +375,21 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
     <g fill="#5A3D22"><circle cx="27" cy="120" r="5"/><circle cx="193" cy="120" r="5"/></g>
     <g fill="none" stroke="#B0883F" stroke-width="4.6"><circle cx="99" cy="58" r="22"/><circle cx="124" cy="58" r="22"/></g>
   </symbol>
-  <symbol id="rings" viewBox="0 0 60 28">
-    <g fill="none" stroke="#B0883F" stroke-width="2.6"><circle cx="24" cy="14" r="9"/><circle cx="38" cy="14" r="9"/></g>
+  <symbol id="rings" viewBox="0 0 62 28">
+    <g fill="none" stroke="currentColor" stroke-width="2.6"><circle cx="23" cy="14" r="9"/><circle cx="39" cy="14" r="9"/></g>
   </symbol>
 </defs></svg>
 
 <div id="petals"></div>
 
 <div id="envelope-screen">
-  <div class="env-bg"></div>
-  <svg class="env-eng" viewBox="0 0 220 134" style="height:auto"><use href="#crest"/></svg>
-  <div class="env-veil"></div>
-  <div class="env-frame"></div>
-  <div class="env-content">
-    <span class="env-eyebrow">Os convocamos</span>
-    <div class="env-mono">B<span>&amp;</span>E</div>
-    <span class="env-names">Bárbara &amp; Esteban</span>
-    <span class="env-date">Zimapán · 31 · X · 2026</span>
+  <div class="env-media-wrap">
+    <img class="env-img" id="envImg" src="sobre.jpg" alt="Sobre con sello de cera B&amp;E">
+    <video class="env-video" id="envVideo" src="apertura.mp4" muted playsinline preload="metadata" poster="sobre.jpg"></video>
   </div>
-  <div class="env-tap" id="envTap">Abrir invitación</div>
+  <div class="env-veil"></div>
+  <span class="env-eyebrow-top">Nos casamos<small>Zimapán · XXXI · X · MMXXVI</small></span>
+  <div class="env-tap" id="envTap">Toca para abrir</div>
 </div>
 
 <div class="copy-toast" id="copyToast">¡Copiado!</div>
@@ -393,9 +406,11 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
       <svg class="cnr cnr-bl"><use href="#cnr"/></svg>
       <svg class="cnr cnr-br"><use href="#cnr"/></svg>
     </div>
-    <div class="hero-content rv">
+    <div class="hero-top rv">
       <span class="hero-tag">Bienvenido a la boda de</span>
       <span class="hero-names">Bárbara<span class="hero-amp">&amp;</span>Esteban</span>
+    </div>
+    <div class="hero-bottom rv">
       <div class="hero-rule"><i></i><svg viewBox="0 0 60 28"><use href="#rings"/></svg><i></i></div>
       <p class="hero-quote">«No andábamos buscándonos,<br>pero andábamos para encontrarnos…»</p>
       <span class="hero-date">31&nbsp;de&nbsp;Octubre&nbsp;de&nbsp;2026</span>
@@ -404,8 +419,8 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
     </div>
     <div class="hero-fadeout"></div>
     <div class="scroll-hint" id="scrollHint">
-      <span class="scroll-hint-txt" style="color:#E8B873">Desliza</span>
-      <span class="scroll-hint-arrow"><svg viewBox="0 0 24 24" style="stroke:#E8B873"><polyline points="6 9 12 15 18 9"/></svg></span>
+      <span class="scroll-hint-txt" style="color:#F5C97A">Desliza</span>
+      <span class="scroll-hint-arrow"><svg viewBox="0 0 24 24" style="stroke:#F5C97A"><polyline points="6 9 12 15 18 9"/></svg></span>
     </div>
   </section>
 
@@ -519,28 +534,16 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
     <h2 class="heading-sm">Formal Campestre</h2>
     <div class="divider"><i></i><svg class="dv"><use href="#rings"/></svg><i></i></div>
     <p class="dc-text" style="margin-top:20px">Tonos neutros y otoñales. Si lo deseas, añade un detalle medieval o alusivo a la fecha en tu atuendo.</p>
-    <div class="dc-cols rv">
-      <div class="dc-col">
-        <svg viewBox="0 0 64 80" width="60" height="76" fill="none">
-          <circle cx="32" cy="12" r="9" stroke="#BD4E1E" stroke-width="1.5"/>
-          <path d="M22 21L32 27L42 21" stroke="#BD4E1E" stroke-width="1.3" stroke-linecap="round"/>
-          <path d="M32 27L30 38L32 43L34 38Z" fill="rgba(189,78,30,.22)" stroke="#7D3131" stroke-width="1.1"/>
-          <path d="M22 21L14 36L16 58L32 54" stroke="#3A2415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M42 21L50 36L48 58L32 54" stroke="#3A2415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M16 58L18 78M48 58L46 78" stroke="#3A2415" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        <div class="dc-col-ttl">Caballeros</div>
-      </div>
-      <div class="dc-col">
-        <svg viewBox="0 0 64 80" width="60" height="76" fill="none">
-          <circle cx="32" cy="11" r="9" stroke="#BD4E1E" stroke-width="1.5"/>
-          <path d="M23 8 Q26 2 32 3 Q38 2 41 8" stroke="#BD4E1E" stroke-width="1.3" fill="rgba(189,78,30,.12)" stroke-linecap="round"/>
-          <path d="M23 22Q20 28 20 34L16 58L48 58L44 34Q44 28 41 22Z" fill="rgba(189,78,30,.1)" stroke="#7D3131" stroke-width="1.3" stroke-linejoin="round"/>
-          <path d="M16 58Q12 72 32 76Q52 72 48 58Z" fill="rgba(189,78,30,.15)" stroke="#7D3131" stroke-width="1.3"/>
-        </svg>
-        <div class="dc-col-ttl">Damas</div>
-      </div>
-    </div>
+    <a class="btn-inspire rv" href="https://pin.it/6mf3Gd5Ce" target="_blank" rel="noopener">
+      <svg class="btn-inspire-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 3l2.39 4.84 5.34.78-3.86 3.77.91 5.32L12 15.27l-4.78 2.51.91-5.32L4.27 8.62l5.34-.78L12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      </svg>
+      <span class="btn-inspire-txt">
+        <span class="btn-inspire-eyebrow">Tablero de inspiración</span>
+        <span class="btn-inspire-title">Ver ideas de atuendo</span>
+      </span>
+      <svg class="btn-inspire-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
     <span class="dc-pal-lbl">Paleta sugerida</span>
     <div class="dc-pal-row">
       <div class="dc-sw"><span class="dc-circle" style="background:#BD4E1E"></span><span class="dc-name">Terracota</span></div>
@@ -621,7 +624,7 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
         <span class="gift-bank-name">Bárbara Celene<br>Álvarez Aquino</span>
         <div class="gift-detail">
           <strong>CLABE</strong><br>
-          <span class="gift-clabe">0127 1102 6245 6724 28</span>
+          <span class="gift-clabe" translate="no" x-apple-data-detectors="false" style="-webkit-text-decoration:none;text-decoration:none">012711026245672428</span>
         </div>
         <button class="btn-copy" onclick="copyText('012711026245672428')">
           <svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
@@ -667,7 +670,7 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
       <svg class="cnr cnr-bl" style="color:var(--ringgold)"><use href="#cnr"/></svg>
       <svg class="cnr cnr-br" style="color:var(--ringgold)"><use href="#cnr"/></svg>
     </div>
-    <div class="divider"><i></i><svg class="dv"><use href="#rings"/></svg><i></i></div>
+    <div class="divider footer-divider"><i></i><svg class="dv" viewBox="0 0 62 28"><use href="#rings"/></svg><i></i></div>
     <svg class="crest crest-sm rv" style="margin-bottom:18px"><use href="#crest"/></svg>
     <div class="footer-names rv">Bárbara &amp; Esteban</div>
     <div class="footer-date rv">31 · Octubre · 2026 · Zimapán</div>
@@ -711,14 +714,39 @@ function initEnvelope(){
   const envScreen=document.getElementById('envelope-screen'),
         envTap=document.getElementById('envTap'),
         envFlash=document.getElementById('env-flash'),
+        envImg=document.getElementById('envImg'),
+        envVideo=document.getElementById('envVideo'),
+        eyebrowTop=document.querySelector('.env-eyebrow-top'),
         mainWrap=document.querySelector('.wrap');
   let tapped=false;
   gsap.fromTo(envTap,{opacity:0,y:8},{opacity:1,y:0,duration:.9,delay:1.1,ease:'power2.out'});
+  function finishAndShow(){
+    gsap.to(envScreen,{opacity:0,duration:.6,ease:'power2.inOut',onComplete:()=>{
+      envScreen.style.display='none';
+      mainWrap.style.visibility='visible';
+      gsap.fromTo(envFlash,{opacity:.6},{opacity:0,duration:.5});
+      initMain();
+    }});
+  }
   function onTap(e){
     if(tapped)return;tapped=true;e.preventDefault();
     if(typeof window._startAudio==='function')window._startAudio();
-    gsap.to('.env-content',{opacity:0,y:-14,duration:.5,ease:'power2.in'});
     gsap.to(envTap,{opacity:0,duration:.3});
+    gsap.to(eyebrowTop,{opacity:0,duration:.3});
+    // Cross-fade: imagen sale, video entra y empieza a reproducir
+    envImg && envImg.classList.add('is-hidden');
+    if(envVideo){
+      envVideo.classList.add('is-playing');
+      const pp=envVideo.play();
+      if(pp && pp.catch) pp.catch(()=>{ setTimeout(finishAndShow,1200); });
+      envVideo.addEventListener('ended',finishAndShow,{once:true});
+      // fallback por si el video falla en algunos dispositivos
+      setTimeout(()=>{ if(envScreen.style.display!=='none') finishAndShow(); },9000);
+    } else {
+      setTimeout(finishAndShow,600);
+    }
+    return;
+    // Antiguo: fade-out directo (referencia)
     gsap.to(envScreen,{opacity:0,duration:.7,delay:.25,ease:'power2.inOut',onComplete:()=>{
       envScreen.style.display='none';
       mainWrap.style.visibility='visible';
