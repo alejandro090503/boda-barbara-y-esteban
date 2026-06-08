@@ -187,9 +187,11 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 
 /* ── ITINERARIO (cards con imágenes integradas) ── */
 .itin-cards{display:flex;flex-direction:column;gap:20px;margin-top:28px}
-.itin-c{background:var(--card);border:1px solid var(--border);padding:0;position:relative;overflow:hidden}
+.itin-c{background:rgba(255,251,242,.55);border:1px solid var(--border);padding:0;position:relative;overflow:hidden}
 .itin-c::before{content:'';position:absolute;inset:7px;border:1px solid var(--border-light);pointer-events:none;z-index:2}
-.itin-c-img{width:100%;height:200px;object-fit:contain;display:block;background:rgba(255,251,242,.45);padding:18px 18px 6px;filter:sepia(.1)}
+/* Imagen del grabado: blend multiply elimina el fondo blanco visualmente — solo quedan los trazos oscuros sobre el pergamino */
+.itin-c-img-wrap{position:relative;width:100%;height:220px;display:flex;align-items:center;justify-content:center;padding:18px 22px 8px;overflow:hidden}
+.itin-c-img{max-width:100%;max-height:100%;object-fit:contain;display:block;mix-blend-mode:multiply;filter:sepia(.4) contrast(1.15) brightness(.94) saturate(.85);-webkit-mask-image:radial-gradient(ellipse 95% 92% at 50% 55%,#000 60%,rgba(0,0,0,.55) 82%,transparent 100%);mask-image:radial-gradient(ellipse 95% 92% at 50% 55%,#000 60%,rgba(0,0,0,.55) 82%,transparent 100%)}
 .itin-c-body{padding:18px 22px 24px;text-align:center}
 .itin-c-time{font-family:var(--title);font-weight:700;font-size:24px;letter-spacing:.04em;color:var(--ink);line-height:1;display:block;margin-bottom:6px;text-transform:uppercase}
 .itin-c-evt{font-family:var(--serif);font-style:italic;font-weight:600;font-size:18px;color:var(--accent);display:block;margin-bottom:4px}
@@ -488,7 +490,7 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
     <div class="itin-cards">
       <!-- Ceremonia Religiosa -->
       <div class="itin-c rv">
-        <img class="itin-c-img" src="iglesia.jpg" alt="Parroquia San Juan Bautista" loading="lazy">
+        <div class="itin-c-img-wrap"><img class="itin-c-img" src="iglesia.jpg" alt="Parroquia San Juan Bautista" loading="lazy"></div>
         <div class="itin-c-body">
           <span class="itin-c-time">12:00 p.m.</span>
           <span class="itin-c-evt">Ceremonia Religiosa</span>
@@ -502,7 +504,7 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 
       <!-- Ceremonia Civil -->
       <div class="itin-c rv">
-        <img class="itin-c-img" src="arbol.jpg" alt="El Sabino" loading="lazy">
+        <div class="itin-c-img-wrap"><img class="itin-c-img" src="arbol.jpg" alt="El Sabino" loading="lazy"></div>
         <div class="itin-c-body">
           <span class="itin-c-time">6:00 p.m.</span>
           <span class="itin-c-evt">Ceremonia Civil</span>
