@@ -119,32 +119,14 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .scroll-hint-arrow svg{width:22px;height:22px;stroke:var(--terra);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
 @keyframes scrollbounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 
-/* ── HERO PREMIUM (foto reales) ── */
-#hero{position:relative;min-height:100dvh;display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;text-align:center;padding:0;overflow:hidden;isolation:isolate;color:#FCEFD3}
-.hero-bg{position:absolute;inset:0;background:#241409 url('hero-novios.jpg') 30% bottom/cover no-repeat;z-index:-3;animation:heroKen 18s ease-in-out infinite alternate}
-@keyframes heroKen{from{transform:scale(1.02) translateY(0)}to{transform:scale(1.06) translateY(-1%)}}
-/* Veil de dos zonas: oscurece SOLO arriba (cielo donde va el texto) y abajo (zona del quote) */
-.hero-veil{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(20,10,4,.88) 0%,rgba(20,10,4,.6) 14%,rgba(20,10,4,.08) 28%,rgba(20,10,4,.08) 58%,rgba(20,10,4,.55) 76%,rgba(20,10,4,.9) 92%,rgba(20,10,4,.96) 100%)}
-/* fade hacia el pergamino que viene abajo */
-.hero-fadeout{position:absolute;left:0;right:0;bottom:0;height:130px;z-index:-1;pointer-events:none;background:linear-gradient(to bottom,transparent 0%,#efe1c4 100%)}
-/* TOP — eyebrow + nombres en la parte superior */
-.hero-top{position:relative;z-index:2;padding:64px 34px 0;display:flex;flex-direction:column;align-items:center}
-.hero-tag{font-family:var(--title);font-weight:700;font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:#F5C97A;display:block;margin-bottom:18px;text-shadow:0 2px 10px rgba(0,0,0,.85)}
-.hero-names{font-family:var(--display);font-weight:900;font-size:clamp(46px,12.5vw,68px);color:#FDF1D2;line-height:.96;letter-spacing:.01em;display:block;text-wrap:balance;text-shadow:0 4px 28px rgba(0,0,0,.85),0 2px 6px rgba(0,0,0,.6)}
-.hero-amp{display:block;font-family:var(--display);font-weight:400;font-size:.42em;color:#F5C97A;margin:.08em 0;text-shadow:0 2px 12px rgba(0,0,0,.8)}
-/* BOTTOM — quote + fecha + lugar */
-.hero-bottom{position:relative;z-index:2;padding:0 34px 130px;display:flex;flex-direction:column;align-items:center}
-.hero-rule{display:flex;align-items:center;justify-content:center;gap:12px;max-width:260px;margin:0 auto 14px;width:100%}
-.hero-rule i{flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(245,201,122,.85),transparent)}
-.hero-rule svg{width:42px;height:18px;flex-shrink:0;color:#F5C97A;opacity:.95}
-.hero-quote{font-family:var(--serif);font-style:italic;font-weight:600;font-size:18px;line-height:1.6;color:#F4E1B5;max-width:340px;margin:0 auto 18px;text-shadow:0 2px 12px rgba(0,0,0,.85)}
-.hero-date{font-family:var(--title);font-weight:700;font-size:17px;letter-spacing:.18em;color:#FDF1D2;margin-top:6px;display:block;text-shadow:0 2px 12px rgba(0,0,0,.85)}
-.hero-date.small{font-size:14px;letter-spacing:.24em;margin-top:6px;color:#F5C97A}
-.hero-place{font-family:var(--label);font-size:12px;letter-spacing:.44em;text-transform:uppercase;color:#F5C97A;margin-top:14px;display:block;text-shadow:0 2px 10px rgba(0,0,0,.85)}
-/* marco dorado del hero más visible */
-#hero .frame::before{border-color:rgba(245,201,122,.55)}
-#hero .frame::after{border-color:rgba(245,201,122,.24)}
-#hero .frame .cnr{color:#F5C97A;opacity:1}
+/* ── HERO (video + imagen estática del cliente) ── */
+#hero{position:relative;min-height:100dvh;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#1f140c}
+.hero-media{position:absolute;inset:0;background:#1f140c}
+#heroVideo,#heroStatic{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+#heroStatic{opacity:0;transition:opacity .8s ease;z-index:2}
+#heroStatic.is-shown{opacity:1}
+#heroVideo{z-index:1;transition:opacity .8s ease}
+#heroVideo.is-hidden{opacity:0}
 
 /* ── CARD ── */
 .card{background:var(--card);border:1px solid var(--border);padding:34px 26px;position:relative;margin:0 4px;backdrop-filter:blur(1px)}
@@ -405,30 +387,15 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 
 <div class="wrap">
 
-  <!-- HERO -->
+  <!-- HERO — video del cliente + imagen estática al terminar -->
   <section id="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-veil"></div>
-    <div class="frame">
-      <svg class="cnr cnr-tl"><use href="#cnr"/></svg>
-      <svg class="cnr cnr-tr"><use href="#cnr"/></svg>
-      <svg class="cnr cnr-bl"><use href="#cnr"/></svg>
-      <svg class="cnr cnr-br"><use href="#cnr"/></svg>
+    <div class="hero-media">
+      <video id="heroVideo" src="hero-video.mp4" muted playsinline preload="auto" poster="hero-static.jpg" autoplay></video>
+      <img id="heroStatic" src="hero-static.jpg" alt="Bienvenido a la boda de Bárbara y Esteban">
     </div>
-    <div class="hero-top rv">
-      <span class="hero-tag">Bienvenido a la boda de</span>
-      <span class="hero-names">Bárbara<span class="hero-amp">&amp;</span>Esteban</span>
-    </div>
-    <div class="hero-bottom rv">
-      <div class="hero-rule"><i></i><svg viewBox="0 0 60 28"><use href="#rings"/></svg><i></i></div>
-      <span class="hero-date" style="margin-top:10px">31&nbsp;de&nbsp;Octubre&nbsp;de&nbsp;2026</span>
-      <span class="hero-date small">12:00&nbsp;p.m.</span>
-      <span class="hero-place">Zimapán · Hidalgo</span>
-    </div>
-    <div class="hero-fadeout"></div>
     <div class="scroll-hint" id="scrollHint">
-      <span class="scroll-hint-txt" style="color:#F5C97A">Desliza</span>
-      <span class="scroll-hint-arrow"><svg viewBox="0 0 24 24" style="stroke:#F5C97A"><polyline points="6 9 12 15 18 9"/></svg></span>
+      <span class="scroll-hint-txt">Desliza</span>
+      <span class="scroll-hint-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
     </div>
   </section>
 
@@ -817,6 +784,24 @@ function launchPetals(){
 function initMain(){
   window.scrollTo(0,0);
   launchPetals();
+
+  /* Hero video → al terminar transiciona a imagen estática */
+  (function(){
+    const v=document.getElementById('heroVideo');
+    const s=document.getElementById('heroStatic');
+    if(!v||!s)return;
+    function showStatic(){
+      s.classList.add('is-shown');
+      v.classList.add('is-hidden');
+      setTimeout(()=>{try{v.pause();}catch(e){}},900);
+    }
+    v.addEventListener('ended',showStatic,{once:true});
+    // Fallback por si el video no carga / autoplay falla
+    setTimeout(()=>{ if(v.paused && v.currentTime===0) showStatic(); },2500);
+    // Asegurar autoplay (mobile-friendly: muted + playsinline)
+    const p=v.play();
+    if(p && p.catch){ p.catch(()=>{ showStatic(); }); }
+  })();
 
   /* Countdown */
   const target=new Date('2026-10-31T12:00:00-06:00');
