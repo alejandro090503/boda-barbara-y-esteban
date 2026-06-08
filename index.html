@@ -78,8 +78,11 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .petal{position:absolute;top:-40px;will-change:transform}
 
 /* ── LAYOUT ── */
-/* Pergamino UNIFORME — UN solo fondo continuo en el .wrap, sin cortes entre secciones */
-.wrap{max-width:460px;margin:0 auto;overflow:hidden;position:relative;z-index:1;visibility:hidden;background:#efe1c4 url('bg-parch.jpg') top center/100% auto repeat-y}
+/* Pergamino UNIFORME — tile seamless verticalmente (espejo) + noise SVG superpuesto para romper simetría */
+.wrap{max-width:460px;margin:0 auto;overflow:hidden;position:relative;z-index:1;visibility:hidden;background:#efe1c4 url('bg-parch-seamless.jpg') top center/100% auto repeat-y}
+/* Capa de noise/grain para romper cualquier patrón repetido visible */
+.wrap::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.5;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch' seed='7'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.22  0 0 0 0 0.12  0 0 0 0.22 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+.wrap>*{position:relative;z-index:1}
 .rv{opacity:0}
 .sec{padding:min(11vh,86px) 32px;position:relative;background:transparent;overflow:hidden}
 .sec-sm{padding:min(7vh,54px) 32px;position:relative;background:transparent;overflow:hidden}
