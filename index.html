@@ -343,6 +343,26 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .vinyl-tonearm-head{position:absolute;bottom:0;right:2px;width:5px;height:6px;background:#BD4E1E;border-radius:0 0 2px 2px}
 .vinyl-tonearm-pivot{position:absolute;top:0;right:2px;width:7px;height:7px;background:radial-gradient(circle,#E8B873,#7D3131);border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,.4)}
 
+/* ── RING GLOW SHIMMER ── */
+.dv{animation:ringShimmer 3s ease-in-out infinite}
+@keyframes ringShimmer{0%,100%{filter:drop-shadow(0 0 3px rgba(232,200,115,.3)) drop-shadow(0 0 8px rgba(176,136,63,.15));opacity:.85}50%{filter:drop-shadow(0 0 8px rgba(232,200,115,.65)) drop-shadow(0 0 18px rgba(176,136,63,.35));opacity:1}}
+
+/* ── HOTEL WEAPON ICON ── */
+.hotel-card{position:relative}
+.hotel-weapon{position:absolute;top:50%;right:10px;transform:translateY(-50%) rotate(15deg);width:22px;height:50px;color:var(--terra);opacity:.25;z-index:3;filter:drop-shadow(0 1px 4px rgba(176,136,63,.3))}
+.hotel-card:nth-child(2) .hotel-weapon{transform:translateY(-50%) rotate(-12deg);right:auto;left:10px;width:20px;height:44px}
+.hotel-card:nth-child(3) .hotel-weapon{width:52px;height:14px;top:auto;bottom:14px;right:10px;transform:rotate(0deg)}
+.hotel-card:nth-child(4) .hotel-weapon{transform:translateY(-50%) rotate(-15deg);right:auto;left:10px;width:22px;height:50px}
+
+/* ── DRESS CODE MEDIEVAL DECREE ── */
+.dc-decree{font-family:var(--serif);font-weight:500;font-size:17px;color:var(--ink);text-align:center;line-height:1.75;margin:0 auto;max-width:380px}
+.dc-decree strong{font-family:var(--title);font-weight:700;color:var(--accent);font-style:normal;text-transform:uppercase;letter-spacing:.04em;font-size:.95em}
+.dc-decree em{font-style:italic;color:var(--accent);font-weight:600}
+.dc-attention{font-family:var(--display);font-weight:700;font-size:clamp(20px,5vw,26px);color:var(--terra);text-align:center;margin-bottom:18px;letter-spacing:.06em}
+.dc-aviso{font-family:var(--title);font-weight:700;font-size:18px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-align:center;margin-bottom:14px;border-bottom:1px solid var(--border);padding-bottom:12px}
+.dc-por-decreto{font-family:var(--serif);font-style:italic;font-weight:600;font-size:17px;color:var(--ink-soft);text-align:center;margin-bottom:22px}
+.dc-separator{width:60px;height:1px;background:linear-gradient(to right,transparent,var(--terra),transparent);margin:22px auto}
+
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -368,7 +388,40 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
     <g fill="none" stroke="#B0883F" stroke-width="4.6"><circle cx="99" cy="58" r="22"/><circle cx="124" cy="58" r="22"/></g>
   </symbol>
   <symbol id="rings" viewBox="0 0 62 28">
-    <g fill="none" stroke="currentColor" stroke-width="2.6"><circle cx="23" cy="14" r="9"/><circle cx="39" cy="14" r="9"/></g>
+    <defs>
+      <filter id="ringGlow" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="1.8" result="blur1"/>
+        <feFlood flood-color="#E8C873" flood-opacity=".55" result="gold"/>
+        <feComposite in="gold" in2="blur1" operator="in" result="glow"/>
+        <feMerge><feMergeNode in="glow"/><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+    <g fill="none" stroke="currentColor" stroke-width="2.6" filter="url(#ringGlow)"><circle cx="23" cy="14" r="9"/><circle cx="39" cy="14" r="9"/></g>
+  </symbol>
+  <!-- Weapon icons for hotel cards -->
+  <symbol id="sword" viewBox="0 0 24 60">
+    <line x1="12" y1="2" x2="12" y2="42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <line x1="6" y1="38" x2="18" y2="38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="10" y="42" width="4" height="10" rx="1" fill="currentColor" opacity=".7"/>
+    <circle cx="12" cy="55" r="2.5" fill="currentColor" opacity=".5"/>
+    <path d="M10 2 L12 0 L14 2 L14 8 L10 8Z" fill="currentColor" opacity=".8"/>
+  </symbol>
+  <symbol id="dagger" viewBox="0 0 20 50">
+    <line x1="10" y1="2" x2="10" y2="32" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="5" y1="30" x2="15" y2="30" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+    <rect x="8.5" y="32" width="3" height="8" rx="1" fill="currentColor" opacity=".7"/>
+    <circle cx="10" cy="43" r="2" fill="currentColor" opacity=".5"/>
+    <path d="M8.5 2 L10 0 L11.5 2 L11.5 6 L8.5 6Z" fill="currentColor" opacity=".8"/>
+  </symbol>
+  <symbol id="arrow-weapon" viewBox="0 0 60 12">
+    <line x1="2" y1="6" x2="52" y2="6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M52 6 L58 3 L56 6 L58 9Z" fill="currentColor"/>
+    <line x1="4" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="1.2"/>
+    <line x1="4" y1="10" x2="8" y2="6" stroke="currentColor" stroke-width="1.2"/>
+  </symbol>
+  <symbol id="axe" viewBox="0 0 28 56">
+    <line x1="14" y1="6" x2="14" y2="52" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M6 6 Q6 16 14 20 Q22 16 22 6 Q18 2 14 4 Q10 2 6 6Z" fill="currentColor" opacity=".65" stroke="currentColor" stroke-width="1"/>
   </symbol>
 </defs></svg>
 
@@ -401,8 +454,7 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 
   <!-- INVITACIÓN -->
   <section class="sec rv" style="text-align:center">
-    <span class="eyebrow">Con la bendición de Dios</span>
-    <h2 class="heading">Hoy comienza<br>nuestro para siempre</h2>
+    <h2 class="heading">Hoy comienza<br>nuestra aventura juntos</h2>
     <div class="divider"><i></i><svg class="dv"><use href="#rings"/></svg><i></i></div>
     <p class="quote" style="margin-top:18px">Con la bendición de nuestras familias, tenemos el honor de invitarte a celebrar nuestra unión en ceremonia religiosa.</p>
     <p style="font-family:var(--title);font-weight:600;font-size:15px;letter-spacing:.08em;color:var(--accent);line-height:1.8;margin-top:26px;text-transform:uppercase">
@@ -471,7 +523,7 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 
       <!-- Ceremonia Civil -->
       <div class="itin-c rv">
-        <div class="itin-c-img-wrap"><img class="itin-c-img" src="arbol.png" alt="El Sabino" loading="lazy"></div>
+        <div class="itin-c-img-wrap" style="height:300px"><img class="itin-c-img" src="arbol.png" alt="El Sabino" loading="lazy"></div>
         <div class="itin-c-body">
           <span class="itin-c-time">6:00 p.m.</span>
           <span class="itin-c-evt">Ceremonia Civil</span>
@@ -515,34 +567,36 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 
   <!-- DRESS CODE -->
   <section class="sec rv" style="text-align:center">
-    <span class="eyebrow">Código de Vestimenta</span>
-    <h2 class="heading-sm">Formal Campestre</h2>
+    <h2 class="heading-sm">Código de Vestimenta</h2>
     <div class="divider"><i></i><svg class="dv"><use href="#rings"/></svg><i></i></div>
-    <p class="dc-text" style="margin-top:20px">Te imaginamos vestido de fiesta entre tonos tierra, otoño y atardecer. Si te animas, suma un detalle de inspiración medieval que dialogue con nuestra fecha — un broche, una capa, una bota, lo que sientas tuyo.</p>
-    <a class="btn-inspire rv" href="https://pin.it/6mf3Gd5Ce" target="_blank" rel="noopener">
-      <svg class="btn-inspire-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M12 3l2.39 4.84 5.34.78-3.86 3.77.91 5.32L12 15.27l-4.78 2.51.91-5.32L4.27 8.62l5.34-.78L12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-      </svg>
-      <span class="btn-inspire-txt">
-        <span class="btn-inspire-eyebrow">Tablero de inspiración</span>
-        <span class="btn-inspire-title">Ver ideas de atuendo</span>
-      </span>
-      <svg class="btn-inspire-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <span class="dc-pal-lbl">Paleta sugerida</span>
-    <div class="dc-pal-row">
-      <div class="dc-sw"><span class="dc-circle" style="background:#BD4E1E"></span><span class="dc-name">Terracota</span></div>
-      <div class="dc-sw"><span class="dc-circle" style="background:#7D3131"></span><span class="dc-name">Vino</span></div>
-      <div class="dc-sw"><span class="dc-circle" style="background:#A0804E"></span><span class="dc-name">Camel</span></div>
-      <div class="dc-sw"><span class="dc-circle" style="background:#D4C5B2"></span><span class="dc-name">Arena</span></div>
-      <div class="dc-sw"><span class="dc-circle" style="background:#5C442C"></span><span class="dc-name">Marrón</span></div>
-    </div>
-    <span class="dc-avoid-lbl">Por favor evita</span>
-    <div class="dc-pal-row">
-      <div class="dc-sw"><span class="dc-circle" style="background:#FFFFFF"></span><span class="dc-name">Blanco</span></div>
-      <div class="dc-sw"><span class="dc-circle" style="background:#D11A1A"></span><span class="dc-name">Rojo</span></div>
-      <div class="dc-sw"><span class="dc-circle" style="background:#E8C81E"></span><span class="dc-name">Amarillo</span></div>
-      <div class="dc-sw"><span class="dc-circle" style="background:#D11A8B"></span><span class="dc-name">Fucsia</span></div>
+
+    <div class="card rv" style="margin-top:22px;padding:32px 22px">
+      <p class="dc-attention">Atención</p>
+      <p class="dc-aviso">Aviso del Reino</p>
+      <p class="dc-por-decreto">Por decreto de los futuros esposos:</p>
+
+      <div class="dc-decree">
+        <p>Para la ceremonia de la iglesia, todos los nobles, damas y caballeros deberán presentarse acorde a la ocasión y al recinto religioso con <strong>atuendo formal</strong>.</p>
+      </div>
+
+      <a class="btn-inspire rv" href="https://pin.it/6mf3Gd5Ce" target="_blank" rel="noopener" style="margin-top:18px;margin-bottom:0">
+        <svg class="btn-inspire-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3l2.39 4.84 5.34.78-3.86 3.77.91 5.32L12 15.27l-4.78 2.51.91-5.32L4.27 8.62l5.34-.78L12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+        <span class="btn-inspire-txt">
+          <span class="btn-inspire-eyebrow">Tablero de inspiración</span>
+          <span class="btn-inspire-title">Ver ideas de atuendo</span>
+        </span>
+        <svg class="btn-inspire-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+
+      <div class="dc-separator"></div>
+
+      <div class="dc-decree">
+        <p>Una vez concluida la ceremonia religiosa, el reino abrirá las puertas para nuestra <em>boda temática</em>.</p>
+        <p style="margin-top:14px">Los invitamos a sacar su lado más fantástico y acompañarnos con disfraces de inspiración medieval y de fantasía. Serán bienvenidos personajes como <strong>hadas, brujas, hechiceros, guerreros, princesas, reyes, elfos, ladrones oscuros, orcos, ogros, dragones, caballeros</strong> y cualquier criatura digna de un reino mágico.</p>
+        <p style="margin-top:14px;font-style:italic;color:var(--accent)">Las únicas reglas son dejar volar la imaginación, liberarse de la crítica y venid listos para celebrar con nosotros una noche llena de magia y fantasía.</p>
+      </div>
     </div>
   </section>
 
@@ -551,23 +605,28 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
     <span class="eyebrow">Para tu Comodidad</span>
     <h2 class="heading-sm">Hospedaje</h2>
     <div class="divider"><i></i><svg class="dv"><use href="#rings"/></svg><i></i></div>
+    <p class="dc-decree rv" style="margin-top:20px;margin-bottom:22px;font-style:italic;color:var(--ink-soft)">Tomando en cuenta que son nobles viajeros de otros reinos, les compartimos las opciones para hospedarse.</p>
     <div class="hotel-list rv">
       <div class="hotel-card">
+        <svg class="hotel-weapon" aria-hidden="true"><use href="#sword"/></svg>
         <div class="hotel-name">Hotel La Colmena</div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.27a2 2 0 0 1 2.11-.45c.74.34 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+527597282028">+52 759 728 2028</a></div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.app.goo.gl/Pf75uypGr8re6mPo9" target="_blank" rel="noopener">Ver en mapa</a></div>
       </div>
       <div class="hotel-card">
+        <svg class="hotel-weapon" aria-hidden="true"><use href="#dagger"/></svg>
         <div class="hotel-name">Hotel Boutique Anyelo</div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.27a2 2 0 0 1 2.11-.45c.74.34 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+527597282088">+52 759 728 2088</a></div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.app.goo.gl/gNxU2n4C7JPURr4W8" target="_blank" rel="noopener">Ver en mapa</a></div>
       </div>
       <div class="hotel-card">
+        <svg class="hotel-weapon" aria-hidden="true"><use href="#arrow-weapon"/></svg>
         <div class="hotel-name">Hotel Don Gerónimo</div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.27a2 2 0 0 1 2.11-.45c.74.34 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+527721051809">+52 772 105 1809</a></div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.app.goo.gl/h9Bon9K7ZCKhpxcB6" target="_blank" rel="noopener">Ver en mapa</a></div>
       </div>
       <div class="hotel-card">
+        <svg class="hotel-weapon" aria-hidden="true"><use href="#axe"/></svg>
         <div class="hotel-name">Hotel Royal Spa</div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.27a2 2 0 0 1 2.11-.45c.74.34 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+527721675625">+52 772 167 5625</a></div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.app.goo.gl/ZBsLamQjqeD63SbZ9" target="_blank" rel="noopener">Ver en mapa</a></div>
@@ -595,10 +654,9 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 
   <!-- MESA DE REGALOS -->
   <section id="regalos" class="sec sec-dark rv" style="text-align:center">
-    <span class="eyebrow">Mesa de Regalos</span>
-    <h2 class="heading">Un Obsequio</h2>
+    <h2 class="heading" style="color:var(--cream)">Mesa de Regalos</h2>
     <div class="divider"><i></i><svg class="dv"><use href="#rings"/></svg><i></i></div>
-    <p class="gift-msg rv">Tu presencia es nuestro regalo más preciado.<br>Si además deseas obsequiarnos algo, con infinita gratitud lo recibimos.</p>
+    <p class="gift-msg rv">Sería un honor para nosotros contar con vuestra presencia y compartir el inicio de esta nueva travesía que hoy comienza. Si vuestro deseo es acompañarnos también con un presente, lo recibiríamos con gratitud y alegría como símbolo de buenos augurios en esta unión que forjamos.</p>
     <div class="gift-opts rv">
       <div class="gift-opt">
         <span class="gift-bank-lbl">Transferencia · BBVA</span>
