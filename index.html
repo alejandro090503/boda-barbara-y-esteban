@@ -229,11 +229,13 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .hotel-row svg{width:15px;height:15px;flex-shrink:0;stroke:var(--terra);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .hotel-row a,.hotel-row span{font-family:var(--serif);font-weight:600;font-size:17px;color:var(--ink);text-decoration:none}
 .hotel-row a:hover{color:var(--accent)}
-/* Armas 3D clavadas en la pared */
-.stone-weapon{position:absolute;pointer-events:none;z-index:3;filter:drop-shadow(8px 14px 12px rgba(0,0,0,.9)) drop-shadow(2px 4px 6px rgba(0,0,0,.7)) brightness(.96) contrast(1.08)}
-.stone-weapon.w-espada{top:3%;right:-8%;width:34%;transform:rotate(32deg)}
-.stone-weapon.w-daga{top:36%;left:-6%;width:22%;transform:rotate(-38deg)}
-.stone-weapon.w-hacha{bottom:5%;right:-6%;width:34%;transform:rotate(-28deg)}
+/* Armas 3D clavadas EN las cards de pergamino — la punta penetra la card */
+.hotel-card{overflow:visible}
+.card-weapon{position:absolute;pointer-events:none;z-index:5;filter:drop-shadow(4px 8px 8px rgba(0,0,0,.6)) drop-shadow(1px 2px 3px rgba(0,0,0,.45))}
+/* Daga: imagen original con punta arriba. La invierto 180° y la pongo saliendo de la card por arriba-derecha. */
+.card-weapon.cw-daga{top:-42%;right:-6%;width:32%;transform:rotate(195deg)}
+/* Hacha: imagen original con mango horizontal. La hoja "muerde" la esquina superior izq de la card. */
+.card-weapon.cw-hacha{top:-50%;left:-8%;width:42%;transform:rotate(-42deg)}
 
 /* ── GALERIA · CARRUSEL ── */
 .gal-carousel{margin-top:28px;position:relative}
@@ -635,9 +637,6 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 
   <!-- HOSPEDAJE — pared de piedra + armas 3D -->
   <section class="sec-stone rv" style="text-align:center">
-    <img class="stone-weapon w-espada" src="arma-espada.webp" alt="" loading="lazy">
-    <img class="stone-weapon w-daga" src="arma-daga.webp" alt="" loading="lazy">
-    <img class="stone-weapon w-hacha" src="arma-hacha.webp" alt="" loading="lazy">
     <span class="eyebrow">Para tu Comodidad</span>
     <h2 class="heading-sm">Hospedaje</h2>
     <div class="divider"><i></i><svg class="dv"><use href="#rings"/></svg><i></i></div>
@@ -649,11 +648,13 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.app.goo.gl/Pf75uypGr8re6mPo9" target="_blank" rel="noopener">Ver en mapa</a></div>
       </div>
       <div class="hotel-card">
+        <img class="card-weapon cw-daga" src="arma-daga.webp" alt="" loading="lazy">
         <div class="hotel-name">Hotel Boutique Anyelo</div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.27a2 2 0 0 1 2.11-.45c.74.34 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+527597282088">+52 759 728 2088</a></div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.app.goo.gl/gNxU2n4C7JPURr4W8" target="_blank" rel="noopener">Ver en mapa</a></div>
       </div>
       <div class="hotel-card">
+        <img class="card-weapon cw-hacha" src="arma-hacha.webp" alt="" loading="lazy">
         <div class="hotel-name">Hotel Don Gerónimo</div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.27a2 2 0 0 1 2.11-.45c.74.34 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+527721051809">+52 772 105 1809</a></div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.app.goo.gl/h9Bon9K7ZCKhpxcB6" target="_blank" rel="noopener">Ver en mapa</a></div>
