@@ -209,15 +209,31 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .no-kids strong{font-family:var(--title);font-style:normal;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;font-size:.92em}
 .no-kids svg{width:18px;height:18px;flex-shrink:0;margin-top:3px;stroke:var(--terra);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
-/* ── HOSPEDAJE ── */
-.hotel-list{display:flex;flex-direction:column;gap:14px;margin-top:26px}
-.hotel-card{background:var(--card);border:1px solid var(--border);padding:24px 22px;text-align:center;position:relative}
-.hotel-card::before{content:'';position:absolute;inset:7px;border:1px solid var(--border-light);pointer-events:none}
+/* ── HOSPEDAJE (pared de piedra + armas 3D) ── */
+.sec-stone{position:relative;padding:min(11vh,86px) 22px;overflow:hidden;background:#1a1410}
+.sec-stone::before{content:'';position:absolute;inset:0;background:url('pared-stone.webp') center/cover no-repeat;z-index:0;-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0%,#000 8%,#000 92%,transparent 100%)}
+.sec-stone::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,transparent 30%,rgba(0,0,0,.5) 100%);z-index:1;pointer-events:none}
+.sec-stone>*{position:relative;z-index:2}
+.sec-stone .eyebrow{color:#E8C873;text-shadow:0 2px 6px rgba(0,0,0,.7),0 0 12px rgba(232,200,115,.3)}
+.sec-stone .heading-sm{color:#F4E4B8;text-shadow:0 2px 8px rgba(0,0,0,.8),0 0 20px rgba(232,200,115,.4)}
+.sec-stone .divider i{background:linear-gradient(to right,transparent,rgba(232,200,115,.7),transparent)}
+.sec-stone .dv{color:#E8C873;filter:drop-shadow(0 0 6px rgba(232,200,115,.6))}
+.sec-stone .dc-decree{color:#F4E4B8;text-shadow:0 1px 4px rgba(0,0,0,.7)}
+.hotel-list{display:flex;flex-direction:column;gap:22px;margin-top:30px;position:relative;z-index:5}
+.hotel-card{background:linear-gradient(180deg,rgba(247,239,221,.96),rgba(233,215,182,.92));border:1px solid rgba(110,78,42,.6);padding:24px 22px;text-align:center;position:relative;box-shadow:0 12px 28px rgba(0,0,0,.55),0 4px 8px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.4);transform:rotate(0deg)}
+.hotel-card:nth-child(odd){transform:rotate(-.4deg)}
+.hotel-card:nth-child(even){transform:rotate(.4deg)}
+.hotel-card::before{content:'';position:absolute;inset:7px;border:1px solid rgba(110,78,42,.3);pointer-events:none}
 .hotel-name{font-family:var(--title);font-weight:600;font-size:18px;letter-spacing:.02em;color:var(--ink);line-height:1.2;margin-bottom:12px;text-transform:uppercase}
 .hotel-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:6px}
 .hotel-row svg{width:15px;height:15px;flex-shrink:0;stroke:var(--terra);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .hotel-row a,.hotel-row span{font-family:var(--serif);font-weight:600;font-size:17px;color:var(--ink);text-decoration:none}
 .hotel-row a:hover{color:var(--accent)}
+/* Armas 3D clavadas en la pared */
+.stone-weapon{position:absolute;pointer-events:none;z-index:3;filter:drop-shadow(8px 14px 12px rgba(0,0,0,.9)) drop-shadow(2px 4px 6px rgba(0,0,0,.7)) brightness(.96) contrast(1.08)}
+.stone-weapon.w-espada{top:3%;right:-8%;width:34%;transform:rotate(32deg)}
+.stone-weapon.w-daga{top:36%;left:-6%;width:22%;transform:rotate(-38deg)}
+.stone-weapon.w-hacha{bottom:5%;right:-6%;width:34%;transform:rotate(-28deg)}
 
 /* ── GALERIA · CARRUSEL ── */
 .gal-carousel{margin-top:28px;position:relative}
@@ -617,33 +633,32 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
     </a>
   </section>
 
-  <!-- HOSPEDAJE -->
-  <section class="sec rv" style="text-align:center">
+  <!-- HOSPEDAJE — pared de piedra + armas 3D -->
+  <section class="sec-stone rv" style="text-align:center">
+    <img class="stone-weapon w-espada" src="arma-espada.webp" alt="" loading="lazy">
+    <img class="stone-weapon w-daga" src="arma-daga.webp" alt="" loading="lazy">
+    <img class="stone-weapon w-hacha" src="arma-hacha.webp" alt="" loading="lazy">
     <span class="eyebrow">Para tu Comodidad</span>
     <h2 class="heading-sm">Hospedaje</h2>
     <div class="divider"><i></i><svg class="dv"><use href="#rings"/></svg><i></i></div>
-    <p class="dc-decree rv" style="margin-top:20px;margin-bottom:22px;font-style:italic;color:var(--ink-soft)">Tomando en cuenta que son nobles viajeros de otros reinos, les compartimos las opciones para hospedarse.</p>
+    <p class="dc-decree rv" style="margin-top:20px;margin-bottom:22px;font-style:italic">Tomando en cuenta que son nobles viajeros de otros reinos, les compartimos las opciones para hospedarse.</p>
     <div class="hotel-list rv">
       <div class="hotel-card">
-        <svg class="hotel-weapon" aria-hidden="true"><use href="#sword"/></svg>
         <div class="hotel-name">Hotel La Colmena</div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.27a2 2 0 0 1 2.11-.45c.74.34 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+527597282028">+52 759 728 2028</a></div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.app.goo.gl/Pf75uypGr8re6mPo9" target="_blank" rel="noopener">Ver en mapa</a></div>
       </div>
       <div class="hotel-card">
-        <svg class="hotel-weapon" aria-hidden="true"><use href="#dagger"/></svg>
         <div class="hotel-name">Hotel Boutique Anyelo</div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.27a2 2 0 0 1 2.11-.45c.74.34 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+527597282088">+52 759 728 2088</a></div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.app.goo.gl/gNxU2n4C7JPURr4W8" target="_blank" rel="noopener">Ver en mapa</a></div>
       </div>
       <div class="hotel-card">
-        <svg class="hotel-weapon" aria-hidden="true"><use href="#arrow-weapon"/></svg>
         <div class="hotel-name">Hotel Don Gerónimo</div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.27a2 2 0 0 1 2.11-.45c.74.34 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+527721051809">+52 772 105 1809</a></div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.app.goo.gl/h9Bon9K7ZCKhpxcB6" target="_blank" rel="noopener">Ver en mapa</a></div>
       </div>
       <div class="hotel-card">
-        <svg class="hotel-weapon" aria-hidden="true"><use href="#axe"/></svg>
         <div class="hotel-name">Hotel Royal Spa</div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.27a2 2 0 0 1 2.11-.45c.74.34 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+527721675625">+52 772 167 5625</a></div>
         <div class="hotel-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.app.goo.gl/ZBsLamQjqeD63SbZ9" target="_blank" rel="noopener">Ver en mapa</a></div>
