@@ -354,6 +354,13 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .hotel-card:nth-child(3) .hotel-weapon{width:52px;height:14px;top:auto;bottom:14px;right:10px;transform:rotate(0deg)}
 .hotel-card:nth-child(4) .hotel-weapon{transform:translateY(-50%) rotate(-15deg);right:auto;left:10px;width:22px;height:50px}
 
+/* ── RSVP PERSONAL NOTICE ── */
+.rsvp-personal{display:flex;align-items:flex-start;gap:12px;max-width:380px;margin:0 auto 22px;padding:16px 18px;background:rgba(189,78,30,.08);border:1px solid rgba(189,78,30,.3);border-radius:2px;text-align:left;position:relative}
+.rsvp-personal::before{content:'';position:absolute;inset:5px;border:1px solid rgba(189,78,30,.15);pointer-events:none}
+.rsvp-personal svg{width:22px;height:22px;flex-shrink:0;color:var(--terra);margin-top:2px;filter:drop-shadow(0 0 4px rgba(232,200,115,.4))}
+.rsvp-personal p{font-family:var(--serif);font-style:italic;font-weight:500;font-size:15px;line-height:1.55;color:var(--ink);margin:0}
+.rsvp-personal strong{font-family:var(--title);font-style:normal;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.04em;font-size:.92em}
+
 /* ── DRESS CODE MEDIEVAL DECREE ── */
 .dc-decree{font-family:var(--serif);font-weight:500;font-size:17px;color:var(--ink);text-align:center;line-height:1.75;margin:0 auto;max-width:380px}
 .dc-decree strong{font-family:var(--title);font-weight:700;color:var(--accent);font-style:normal;text-transform:uppercase;letter-spacing:.04em;font-size:.95em}
@@ -480,7 +487,6 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 
   <!-- NUESTRAS FAMILIAS -->
   <section class="sec rv" style="text-align:center">
-    <span class="eyebrow">Con la bendición de</span>
     <h2 class="heading-sm">Nuestras Familias</h2>
     <div class="divider"><i></i><svg class="dv"><use href="#rings"/></svg><i></i></div>
     <div class="fam-grid rv">
@@ -598,6 +604,17 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
         <p style="margin-top:14px;font-style:italic;color:var(--accent)">Las únicas reglas son dejar volar la imaginación, liberarse de la crítica y venid listos para celebrar con nosotros una noche llena de magia y fantasía.</p>
       </div>
     </div>
+
+    <a class="btn-inspire rv" href="#" id="btnTematica" target="_blank" rel="noopener" style="margin-top:20px">
+      <svg class="btn-inspire-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2 L14 8 L20 8 L15 12 L17 18 L12 14 L7 18 L9 12 L4 8 L10 8 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      </svg>
+      <span class="btn-inspire-txt">
+        <span class="btn-inspire-eyebrow">Inspiración temática</span>
+        <span class="btn-inspire-title">Ideas para tu disfraz</span>
+      </span>
+      <svg class="btn-inspire-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </section>
 
   <!-- HOSPEDAJE -->
@@ -694,6 +711,10 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
     <h2 class="heading-sm">¿Nos acompañas?</h2>
     <div class="divider"><i></i><svg class="dv"><use href="#rings"/></svg><i></i></div>
     <span class="rsvp-deadline">Confirma antes del 8 de Agosto · 2026</span>
+    <div class="rsvp-personal rv">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 L14 8 L20 8 L15 12 L17 18 L12 14 L7 18 L9 12 L4 8 L10 8 Z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/></svg>
+      <p>Esta invitación es <strong>personal e intransferible</strong>. Te pedimos confirmar únicamente las personas a las que la invitación va dirigida.</p>
+    </div>
     <p class="rsvp-msg">Será un honor recibirte. Confírmanos tu asistencia con un solo toque y prepárate para celebrar con nosotros.</p>
     <a class="btn-wa" id="btnWa" href="#" rel="noopener">
       <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.997 2C6.477 2 2 6.477 2 12c0 1.99.589 3.845 1.6 5.4L2 22l4.73-1.578A9.956 9.956 0 0 0 12 22c5.52 0 10-4.477 10-10S17.52 2 11.997 2z"/></svg>
