@@ -777,7 +777,7 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
     <svg class="vinyl-icon-pause" viewBox="0 0 24 24" fill="#FCEFD3" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
   </div>
 </button>
-<audio id="bgAudio" loop autoplay preload="auto" playsinline><source src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/audio/boda-barbara-y-esteban/cancion.mp3" type="audio/mpeg"></audio>
+<audio id="bgAudio" loop preload="auto" playsinline><source src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/audio/boda-barbara-y-esteban/cancion.mp3" type="audio/mpeg"></audio>
 <div id="env-flash"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
@@ -804,12 +804,12 @@ function initEnvelope(){
       envScreen.style.display='none';
       mainWrap.style.visibility='visible';
       gsap.fromTo(envFlash,{opacity:.6},{opacity:0,duration:.5});
+      if(typeof window._startAudio==='function')window._startAudio();
       initMain();
     }});
   }
   function onTap(e){
     if(tapped)return;tapped=true;e.preventDefault();
-    if(typeof window._startAudio==='function')window._startAudio();
     gsap.to(envTap,{opacity:0,duration:.3});
     gsap.to(eyebrowTop,{opacity:0,duration:.3});
     // Cross-fade: imagen sale, video entra y empieza a reproducir
@@ -837,7 +837,7 @@ function initEnvelope(){
   envScreen.addEventListener('touchstart',onTap,{passive:false});
 }
 
-/* ── AUDIO (vinyl) — autoplay con fallback a primer gesto del usuario ── */
+/* ── AUDIO (vinyl) — arranca al terminar el video del sobre ── */
 (function(){
   const audio=document.getElementById('bgAudio');
   const fab=document.getElementById('musicFab');
@@ -848,19 +848,9 @@ function initEnvelope(){
   function startAudio(){
     showFab();
     audio.volume=.5;
-    return audio.play();
+    audio.play().catch(()=>{});
   }
   window._startAudio=startAudio;
-  // 1) Intento autoplay inmediato (funciona en desktop con permiso, falla silencioso en mobile)
-  const p=audio.play();
-  if(p&&p.then){p.then(()=>showFab()).catch(()=>{
-    // 2) Si falla, arrancar al primer gesto del usuario en CUALQUIER parte
-    function onFirstGesture(){
-      startAudio().catch(()=>{});
-      ['pointerdown','touchstart','click','keydown'].forEach(ev=>document.removeEventListener(ev,onFirstGesture,true));
-    }
-    ['pointerdown','touchstart','click','keydown'].forEach(ev=>document.addEventListener(ev,onFirstGesture,{capture:true,once:false,passive:true}));
-  });}else{showFab();}
   fab.addEventListener('click',()=>{
     if(audio.paused){audio.play().catch(()=>{});}
     else{audio.pause();}
