@@ -515,7 +515,7 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
     <div class="fam-grid rv">
       <div class="fam-card">
         <span class="fam-role-lbl">Padres de la Novia</span>
-        <span class="fam-name">Luis A. Álvarez Cisneros</span>
+        <span class="fam-name">Luis A.<br>Álvarez<br>Cisneros</span>
         <div class="fam-and"><div class="fam-and-line"></div><span class="fam-and-txt">y</span><div class="fam-and-line"></div></div>
         <span class="fam-name">América Aquino Alvarado</span>
       </div>
@@ -628,7 +628,7 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
       </div>
     </div>
 
-    <a class="btn-inspire rv" href="#" id="btnTematica" target="_blank" rel="noopener" style="margin-top:20px">
+    <a class="btn-inspire rv" href="https://pin.it/4DdrvYnaT" id="btnTematica" target="_blank" rel="noopener" style="margin-top:20px">
       <svg class="btn-inspire-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path d="M12 2 L14 8 L20 8 L15 12 L17 18 L12 14 L7 18 L9 12 L4 8 L10 8 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
       </svg>
@@ -777,7 +777,7 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
     <svg class="vinyl-icon-pause" viewBox="0 0 24 24" fill="#FCEFD3" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
   </div>
 </button>
-<audio id="bgAudio" loop preload="none"><source src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/audio/boda-barbara-y-esteban/cancion.mp3" type="audio/mpeg"></audio>
+<audio id="bgAudio" loop autoplay preload="auto" playsinline><source src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/audio/boda-barbara-y-esteban/cancion.mp3" type="audio/mpeg"></audio>
 <div id="env-flash"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
@@ -837,19 +837,30 @@ function initEnvelope(){
   envScreen.addEventListener('touchstart',onTap,{passive:false});
 }
 
-/* ── AUDIO (vinyl) ── */
+/* ── AUDIO (vinyl) — autoplay con fallback a primer gesto del usuario ── */
 (function(){
   const audio=document.getElementById('bgAudio');
   const fab=document.getElementById('musicFab');
+  audio.volume=.5;
   audio.addEventListener('play',()=>fab.classList.add('is-playing'));
   audio.addEventListener('pause',()=>fab.classList.remove('is-playing'));
   function showFab(){fab.classList.add('is-ready');}
   function startAudio(){
     showFab();
     audio.volume=.5;
-    audio.play().catch(()=>{});
+    return audio.play();
   }
   window._startAudio=startAudio;
+  // 1) Intento autoplay inmediato (funciona en desktop con permiso, falla silencioso en mobile)
+  const p=audio.play();
+  if(p&&p.then){p.then(()=>showFab()).catch(()=>{
+    // 2) Si falla, arrancar al primer gesto del usuario en CUALQUIER parte
+    function onFirstGesture(){
+      startAudio().catch(()=>{});
+      ['pointerdown','touchstart','click','keydown'].forEach(ev=>document.removeEventListener(ev,onFirstGesture,true));
+    }
+    ['pointerdown','touchstart','click','keydown'].forEach(ev=>document.addEventListener(ev,onFirstGesture,{capture:true,once:false,passive:true}));
+  });}else{showFab();}
   fab.addEventListener('click',()=>{
     if(audio.paused){audio.play().catch(()=>{});}
     else{audio.pause();}
