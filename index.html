@@ -296,6 +296,33 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
 .btn-wa:hover{background:var(--accent)}
 .btn-wa svg{width:21px;height:21px;fill:currentColor;flex-shrink:0}
 
+/* RSVP step flow */
+.rsvp-step{transition:opacity .35s ease}
+.rsvp-step.hidden{display:none}
+.rsvp-pases-info{font-family:var(--serif);font-style:italic;font-weight:500;font-size:18px;color:var(--ink);text-align:center;line-height:1.6;max-width:340px;margin:0 auto 22px}
+.rsvp-pases-info strong{font-family:var(--title);font-style:normal;font-weight:700;color:var(--accent);font-size:1.15em;letter-spacing:.04em}
+.rsvp-btn-row{display:flex;flex-direction:column;gap:12px;max-width:360px;margin:0 auto}
+.btn-rsvp{display:flex;align-items:center;justify-content:center;gap:10px;padding:18px 24px;font-family:var(--serif);font-style:italic;font-weight:700;font-size:19px;border:1.5px solid var(--border);cursor:pointer;transition:transform .2s ease,background .25s ease,box-shadow .25s ease;background:rgba(255,251,242,.65);color:var(--ink);position:relative}
+.btn-rsvp::before{content:'';position:absolute;inset:5px;border:1px solid var(--border-light);pointer-events:none}
+.btn-rsvp:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(110,78,42,.22)}
+.btn-rsvp svg{width:22px;height:22px;flex-shrink:0}
+.btn-rsvp-yes{background:linear-gradient(180deg,rgba(125,49,49,.92),rgba(125,49,49,.78));color:var(--cream);border-color:rgba(125,49,49,.6)}
+.btn-rsvp-yes::before{border-color:rgba(247,239,221,.22)}
+.btn-rsvp-yes:hover{background:linear-gradient(180deg,#7D3131,#5e2424)}
+.btn-rsvp-no{background:rgba(255,251,242,.65);color:var(--ink-soft);border-color:var(--border)}
+.btn-rsvp-no:hover{background:rgba(255,251,242,.9)}
+.btn-rsvp-back{display:block;margin:18px auto 0;background:transparent;border:none;font-family:var(--label);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);cursor:pointer;padding:10px 18px;text-decoration:underline}
+.btn-rsvp-back:hover{color:var(--ink)}
+.rsvp-fields{display:flex;flex-direction:column;gap:12px;max-width:360px;margin:0 auto 22px}
+.rsvp-field{display:flex;flex-direction:column;gap:6px;text-align:left;position:relative;background:rgba(255,251,242,.55);border:1px solid var(--border);padding:14px 16px}
+.rsvp-field::before{content:'';position:absolute;inset:5px;border:1px solid var(--border-light);pointer-events:none}
+.rsvp-field label{font-family:var(--label);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);position:relative;z-index:1}
+.rsvp-field input{width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);font-family:var(--serif);font-weight:600;font-size:17px;color:var(--ink);padding:6px 0 8px;outline:none;position:relative;z-index:1}
+.rsvp-field input:focus{border-bottom-color:var(--accent)}
+.rsvp-textarea{display:block;width:100%;max-width:360px;margin:0 auto 22px;background:rgba(255,251,242,.55);border:1px solid var(--border);padding:14px 16px;font-family:var(--serif);font-weight:500;font-size:16px;color:var(--ink);outline:none;resize:vertical;min-height:80px;font-style:italic}
+.rsvp-textarea:focus{border-color:var(--accent)}
+.rsvp-textarea::placeholder{color:var(--ink-soft);opacity:.7}
+
 /* ── FOOTER ── */
 #footer{padding:80px 32px 64px;text-align:center;position:relative;overflow:hidden}
 .footer-names{font-family:var(--title);font-weight:600;font-size:24px;letter-spacing:.08em;color:var(--cream);text-transform:uppercase}
@@ -725,7 +752,7 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
   </section>
 
   <!-- RSVP -->
-  <section class="sec rv" style="text-align:center">
+  <section class="sec rv" id="rsvpSection" style="text-align:center">
     <span class="eyebrow">Confirmación</span>
     <h2 class="heading-sm">¿Nos acompañas?</h2>
     <div class="divider"><i></i><svg class="dv"><use href="#rings"/></svg><i></i></div>
@@ -734,11 +761,43 @@ body{background:#cdb68f;color:var(--ink);font-family:var(--serif);font-weight:50
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 L14 8 L20 8 L15 12 L17 18 L12 14 L7 18 L9 12 L4 8 L10 8 Z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/></svg>
       <p>Esta invitación es <strong>personal e intransferible</strong>. Te pedimos confirmar únicamente las personas a las que la invitación va dirigida.</p>
     </div>
-    <p class="rsvp-msg">Será un honor recibirte. Confírmanos tu asistencia con un solo toque y prepárate para celebrar con nosotros.</p>
-    <a class="btn-wa" id="btnWa" href="#" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.997 2C6.477 2 2 6.477 2 12c0 1.99.589 3.845 1.6 5.4L2 22l4.73-1.578A9.956 9.956 0 0 0 12 22c5.52 0 10-4.477 10-10S17.52 2 11.997 2z"/></svg>
-      Confirmar asistencia
-    </a>
+
+    <!-- PASO 1: Botones Sí/No -->
+    <div class="rsvp-step" id="rsvpStep1">
+      <p class="rsvp-pases-info">Vuestra invitación contempla <strong id="rsvpPasesNum">1</strong> <span id="rsvpPasesTxt">pase</span></p>
+      <div class="rsvp-btn-row">
+        <button type="button" class="btn-rsvp btn-rsvp-yes" id="btnYes">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Sí asistiré
+        </button>
+        <button type="button" class="btn-rsvp btn-rsvp-no" id="btnNo">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+          No podré asistir
+        </button>
+      </div>
+    </div>
+
+    <!-- PASO 2A: Sí asistiré → nombres -->
+    <div class="rsvp-step hidden" id="rsvpStepYes">
+      <p class="rsvp-msg" style="margin-bottom:18px">Será un honor recibirte. Por favor escribe el nombre de cada asistente:</p>
+      <div class="rsvp-fields" id="rsvpFields"></div>
+      <button type="button" class="btn-wa" id="btnSendYes">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.997 2C6.477 2 2 6.477 2 12c0 1.99.589 3.845 1.6 5.4L2 22l4.73-1.578A9.956 9.956 0 0 0 12 22c5.52 0 10-4.477 10-10S17.52 2 11.997 2z"/></svg>
+        Enviar confirmación
+      </button>
+      <button type="button" class="btn-rsvp-back" id="btnBackYes">← Cambiar respuesta</button>
+    </div>
+
+    <!-- PASO 2B: No asistiré → mensaje opcional -->
+    <div class="rsvp-step hidden" id="rsvpStepNo">
+      <p class="rsvp-msg" style="margin-bottom:18px">Lamentamos que no puedas acompañarnos. Si gustas, déjanos un mensaje:</p>
+      <textarea class="rsvp-textarea" id="rsvpMsg" placeholder="Mensaje opcional para los novios" rows="3"></textarea>
+      <button type="button" class="btn-wa" id="btnSendNo">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.997 2C6.477 2 2 6.477 2 12c0 1.99.589 3.845 1.6 5.4L2 22l4.73-1.578A9.956 9.956 0 0 0 12 22c5.52 0 10-4.477 10-10S17.52 2 11.997 2z"/></svg>
+        Enviar mensaje
+      </button>
+      <button type="button" class="btn-rsvp-back" id="btnBackNo">← Cambiar respuesta</button>
+    </div>
   </section>
 
   <!-- FOOTER -->
@@ -933,15 +992,66 @@ function initMain(){
       scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
   });
 
-  /* RSVP — botón único WhatsApp con mensaje predeterminado */
-  const waNum='524871122391';
-  const waMsg='¡Hola! Con mucho gusto confirmo mi asistencia a la celebración de Barbara Celene & Esteban Orlando. 🎉\n¡Nos vemos pronto! 💫';
-  const waUrl='https://wa.me/'+waNum+'?text='+encodeURIComponent(waMsg);
-  const btnWa=document.getElementById('btnWa');
-  if(btnWa){
-    btnWa.href=waUrl;
-    btnWa.addEventListener('click',function(e){e.preventDefault();window.open(waUrl,'_blank');});
-  }
+  /* RSVP — Sistema con ?pases= + flujo Sí/No + nombres dinámicos */
+  (function(){
+    const waNum='524871122391';
+    const params=new URLSearchParams(window.location.search);
+    let pases=parseInt(params.get('pases')||'1',10);
+    if(!Number.isFinite(pases)||pases<1)pases=1;
+    if(pases>10)pases=10;
+    const pasesNum=document.getElementById('rsvpPasesNum');
+    const pasesTxt=document.getElementById('rsvpPasesTxt');
+    if(pasesNum)pasesNum.textContent=pases;
+    if(pasesTxt)pasesTxt.textContent=pases===1?'pase':'pases';
+
+    const fields=document.getElementById('rsvpFields');
+    if(fields){
+      for(let i=1;i<=pases;i++){
+        const wrap=document.createElement('div');
+        wrap.className='rsvp-field';
+        wrap.innerHTML='<label>Asistente '+i+'</label><input type="text" id="rsvpAsist'+i+'" placeholder="Nombre completo" autocomplete="name" required>';
+        fields.appendChild(wrap);
+      }
+    }
+
+    const step1=document.getElementById('rsvpStep1');
+    const stepYes=document.getElementById('rsvpStepYes');
+    const stepNo=document.getElementById('rsvpStepNo');
+    function showStep(s){
+      [step1,stepYes,stepNo].forEach(el=>el&&el.classList.add('hidden'));
+      s&&s.classList.remove('hidden');
+      document.getElementById('rsvpSection')?.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    document.getElementById('btnYes')?.addEventListener('click',()=>showStep(stepYes));
+    document.getElementById('btnNo')?.addEventListener('click',()=>showStep(stepNo));
+    document.getElementById('btnBackYes')?.addEventListener('click',()=>showStep(step1));
+    document.getElementById('btnBackNo')?.addEventListener('click',()=>showStep(step1));
+
+    document.getElementById('btnSendYes')?.addEventListener('click',()=>{
+      const nombres=[];
+      for(let i=1;i<=pases;i++){
+        const inp=document.getElementById('rsvpAsist'+i);
+        const v=(inp?.value||'').trim();
+        if(!v){
+          inp?.focus();
+          inp?.scrollIntoView({behavior:'smooth',block:'center'});
+          if(inp){inp.style.borderBottomColor='var(--accent)';inp.placeholder='Por favor escribe el nombre';}
+          return;
+        }
+        nombres.push(v);
+      }
+      const lista=nombres.map((n,i)=>(i+1)+'. '+n).join('\n');
+      const msg='¡Hola Bárbara y Esteban! 🎉\n\nConfirmamos nuestra asistencia a vuestra boda:\n'+lista+'\n\n¡Nos vemos el 31 de Octubre! 💫';
+      window.open('https://wa.me/'+waNum+'?text='+encodeURIComponent(msg),'_blank');
+    });
+
+    document.getElementById('btnSendNo')?.addEventListener('click',()=>{
+      const extra=(document.getElementById('rsvpMsg')?.value||'').trim();
+      let msg='Hola Bárbara y Esteban, lamentablemente no podré acompañarlos en su boda. Les deseo lo mejor en este día tan especial. 💕';
+      if(extra) msg+='\n\n'+extra;
+      window.open('https://wa.me/'+waNum+'?text='+encodeURIComponent(msg),'_blank');
+    });
+  })();
 
   /* Carrusel galería — dots + sync */
   (function(){
